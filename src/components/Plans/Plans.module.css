@@ -1,0 +1,363 @@
+.plans {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 90% 15%,
+      rgb(144 224 239 / 24%),
+      transparent 28rem
+    ),
+    var(--color-background);
+}
+
+.introduction {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.65fr);
+  align-items: end;
+  gap: var(--space-7);
+  margin-bottom: var(--space-7);
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: var(--space-3);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 15ch;
+  margin-bottom: 0;
+  color: var(--color-text);
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  letter-spacing: -0.055em;
+  line-height: 1.03;
+}
+
+.introductionContent {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.introductionText {
+  max-width: 52ch;
+  margin-bottom: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+  line-height: 1.75;
+}
+
+.allPlansLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 900;
+}
+
+.allPlansLink:hover {
+  color: var(--color-primary-dark);
+  gap: var(--space-3);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: var(--space-4);
+}
+
+.card {
+  position: relative;
+  display: flex;
+  min-height: 610px;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border-radius: calc(var(--radius-lg) + 0.25rem);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.standardCard {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.featuredCard {
+  color: var(--color-white);
+  background:
+    linear-gradient(
+      150deg,
+      var(--color-primary-dark),
+      var(--color-primary),
+      var(--color-secondary)
+    );
+  border: 1px solid rgb(255 255 255 / 18%);
+  box-shadow: 0 22px 50px rgb(0 119 182 / 24%);
+  transform: translateY(-18px);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-7px);
+}
+
+.featuredCard:hover {
+  transform: translateY(-25px);
+}
+
+.badge {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding-inline: var(--space-3);
+  color: var(--color-primary-dark);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: var(--color-white);
+  border-radius: var(--radius-pill);
+}
+
+.iconContainer {
+  display: inline-flex;
+  width: 58px;
+  height: 58px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-5);
+  color: var(--color-primary);
+  background-color: rgb(144 224 239 / 25%);
+  border: 1px solid rgb(0 119 182 / 12%);
+  border-radius: var(--radius-md);
+}
+
+.featuredCard .iconContainer {
+  color: var(--color-white);
+  background-color: rgb(255 255 255 / 14%);
+  border-color: rgb(255 255 255 / 20%);
+}
+
+.iconContainer svg {
+  width: 29px;
+  height: 29px;
+}
+
+.cardTitle {
+  margin-bottom: var(--space-3);
+  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.cardDescription {
+  min-height: 105px;
+  margin-bottom: var(--space-5);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.featuredCard .cardDescription {
+  color: rgb(255 255 255 / 82%);
+}
+
+.priceContainer {
+  min-height: 94px;
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.featuredCard .priceContainer {
+  border-color: rgb(255 255 255 / 20%);
+}
+
+.previousPrice {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  text-decoration: line-through;
+}
+
+.featuredCard .previousPrice {
+  color: rgb(255 255 255 / 65%);
+}
+
+.priceLine {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.price {
+  color: var(--color-text);
+  font-size: clamp(2.25rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.featuredCard .price {
+  color: var(--color-white);
+}
+
+.frequency {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.featuredCard .frequency {
+  color: rgb(255 255 255 / 72%);
+}
+
+.featureList {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.featuredCard .featureItem {
+  color: rgb(255 255 255 / 92%);
+}
+
+.checkContainer {
+  display: inline-flex;
+  width: 23px;
+  height: 23px;
+  flex: 0 0 23px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  background-color: var(--color-success);
+  border-radius: 50%;
+}
+
+.featuredCard .checkContainer {
+  color: var(--color-primary-dark);
+  background-color: var(--color-white);
+}
+
+.checkContainer svg {
+  width: 14px;
+  height: 14px;
+}
+
+.planButton {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  padding-inline: var(--space-4);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  font-weight: 900;
+  text-align: center;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+}
+
+.featuredCard .planButton {
+  color: var(--color-primary-dark);
+  background-color: var(--color-white);
+}
+
+.planButton:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.disclaimer {
+  max-width: 75ch;
+  margin: var(--space-5) auto 0;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+@media (max-width: 1050px) {
+  .introduction {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .card {
+    min-height: auto;
+  }
+
+  .featuredCard {
+    order: -1;
+    transform: none;
+  }
+
+  .featuredCard:hover {
+    transform: translateY(-7px);
+  }
+
+  .cardDescription,
+  .priceContainer {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .title {
+    max-width: 100%;
+    font-size: clamp(2.3rem, 11vw, 3.4rem);
+  }
+
+  .introductionText {
+    font-size: var(--font-size-base);
+  }
+
+  .card {
+    padding: var(--space-5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .planButton,
+  .allPlansLink {
+    transition: none;
+  }
+
+  .card:hover,
+  .featuredCard:hover,
+  .planButton:hover {
+    transform: none;
+  }
+}

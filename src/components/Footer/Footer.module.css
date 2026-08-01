@@ -1,0 +1,251 @@
+.footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--color-white);
+  background:
+    linear-gradient(
+      145deg,
+      #021f35 0%,
+      var(--color-primary-dark) 58%,
+      #004f75 100%
+    );
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns:
+    minmax(260px, 1.2fr)
+    minmax(140px, 0.6fr)
+    minmax(170px, 0.7fr)
+    minmax(260px, 1fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  padding-block: clamp(4rem, 8vw, 6.5rem);
+}
+
+.brandColumn {
+  max-width: 360px;
+}
+
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  margin-bottom: var(--space-5);
+  line-height: 1.1;
+}
+
+.brandName {
+  color: var(--color-white);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+.brandDescription {
+  margin-top: var(--space-1);
+  color: rgb(255 255 255 / 68%);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.description {
+  max-width: 36ch;
+  margin-bottom: var(--space-6);
+  color: rgb(255 255 255 / 72%);
+  line-height: 1.75;
+}
+
+.whatsappButton {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding-inline: var(--space-4);
+  color: #043950;
+  font-size: var(--font-size-sm);
+  font-weight: 900;
+  background-color: var(--color-white);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+}
+
+.whatsappButton:hover {
+  box-shadow: 0 16px 34px rgb(0 0 0 / 22%);
+  transform: translateY(-3px);
+}
+
+.whatsappButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+.columnTitle {
+  margin-bottom: var(--space-5);
+  color: var(--color-white);
+  font-size: var(--font-size-base);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.linkList {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.footerLink {
+  display: inline-flex;
+  width: fit-content;
+  color: rgb(255 255 255 / 70%);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.footerLink:hover {
+  color: var(--color-white);
+  transform: translateX(4px);
+}
+
+.contactList {
+  display: grid;
+  gap: var(--space-4);
+  font-style: normal;
+}
+
+.contactItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: inherit;
+}
+
+a.contactItem:hover .contactIcon {
+  color: var(--color-primary-dark);
+  background-color: var(--color-white);
+}
+
+.contactIcon {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  background-color: rgb(255 255 255 / 10%);
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: var(--radius-sm);
+}
+
+.contactIcon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.contactItem span:last-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactItem strong {
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+}
+
+.contactItem small {
+  margin-top: var(--space-1);
+  color: rgb(255 255 255 / 66%);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.bottomBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding-block: var(--space-5);
+  border-top: 1px solid rgb(255 255 255 / 12%);
+}
+
+.copyright,
+.bottomMessage {
+  margin: 0;
+  color: rgb(255 255 255 / 58%);
+  font-size: 0.78rem;
+}
+
+.bottomMessage {
+  text-align: right;
+}
+
+.decoration {
+  position: absolute;
+  z-index: 0;
+  right: -220px;
+  bottom: -270px;
+  width: 620px;
+  height: 620px;
+  border: 90px solid rgb(255 255 255 / 4%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+@media (max-width: 1050px) {
+  .mainContent {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .brandColumn {
+    max-width: 440px;
+  }
+}
+
+@media (max-width: 680px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+    gap: var(--space-7);
+    padding-block: var(--space-8);
+  }
+
+  .brandColumn {
+    max-width: 100%;
+  }
+
+  .description {
+    max-width: 45ch;
+  }
+
+  .whatsappButton {
+    width: 100%;
+  }
+
+  .bottomBar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .bottomMessage {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsappButton,
+  .footerLink,
+  .contactIcon {
+    transition: none;
+  }
+
+  .whatsappButton:hover,
+  .footerLink:hover {
+    transform: none;
+  }
+}

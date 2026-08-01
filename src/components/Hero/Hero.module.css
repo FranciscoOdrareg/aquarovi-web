@@ -1,0 +1,406 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100vh - 78px);
+  overflow: hidden;
+  background:
+    linear-gradient(
+      115deg,
+      rgb(255 255 255 / 98%) 0%,
+      rgb(247 250 252 / 96%) 52%,
+      rgb(224 247 250 / 90%) 100%
+    );
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  min-height: calc(100vh - 78px);
+  grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
+  align-items: center;
+  gap: clamp(3rem, 7vw, 7rem);
+  padding-block: clamp(4rem, 9vw, 7rem);
+}
+
+.content {
+  max-width: 680px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  margin-bottom: var(--space-5);
+  padding-inline: var(--space-4);
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background-color: rgb(144 224 239 / 28%);
+  border: 1px solid rgb(0 119 182 / 14%);
+  border-radius: var(--radius-pill);
+}
+
+.title {
+  max-width: 12ch;
+  margin-bottom: var(--space-5);
+  color: var(--color-text);
+  font-size: clamp(3rem, 6vw, 5.6rem);
+  font-weight: 850;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+}
+
+.titleAccent {
+  position: relative;
+  display: inline-block;
+  color: var(--color-primary);
+}
+
+.titleAccent::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.08em;
+  left: 0;
+  height: 0.11em;
+  content: "";
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-pill);
+  transform: rotate(-1.5deg);
+}
+
+.description {
+  max-width: 620px;
+  margin-bottom: var(--space-6);
+  color: var(--color-text-muted);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.75;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  padding-inline: var(--space-5);
+  font-weight: 800;
+  border-radius: var(--radius-pill);
+}
+
+.primaryButton {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  box-shadow: 0 12px 30px rgb(0 119 182 / 24%);
+}
+
+.primaryButton:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: 0 16px 34px rgb(0 119 182 / 30%);
+  transform: translateY(-3px);
+}
+
+.secondaryButton {
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.secondaryButton:hover {
+  color: var(--color-primary-dark);
+  border-color: var(--color-primary-light);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+}
+
+.checkmark {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  font-size: 0.75rem;
+  font-weight: 900;
+  background-color: var(--color-success);
+  border-radius: 50%;
+}
+
+.visual {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.serviceCard {
+  position: relative;
+  display: flex;
+  min-height: 360px;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: var(--space-5);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.serviceCard::before,
+.serviceCard::after {
+  position: absolute;
+  content: "";
+  border-radius: 50%;
+}
+
+.serviceCard::before {
+  top: -80px;
+  right: -70px;
+  width: 210px;
+  height: 210px;
+  background-color: rgb(255 255 255 / 13%);
+}
+
+.serviceCard::after {
+  right: -30px;
+  bottom: -55px;
+  width: 150px;
+  height: 150px;
+  border: 24px solid rgb(255 255 255 / 10%);
+}
+
+.gymCard {
+  margin-top: var(--space-7);
+  background:
+    linear-gradient(160deg, rgb(4 47 74 / 35%), transparent 65%),
+    linear-gradient(145deg, #0077b6, #023e8a);
+}
+
+.poolCard {
+  background:
+    linear-gradient(160deg, rgb(255 255 255 / 15%), transparent 60%),
+    linear-gradient(145deg, #00b4d8, #0077b6);
+}
+
+.cardNumber {
+  position: relative;
+  z-index: 1;
+  color: rgb(255 255 255 / 65%);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 1;
+}
+
+.cardLabel {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: rgb(255 255 255 / 76%);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cardTitle {
+  margin-bottom: var(--space-3);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+}
+
+.cardText {
+  margin-bottom: 0;
+  color: rgb(255 255 255 / 84%);
+  font-size: var(--font-size-sm);
+  line-height: 1.65;
+}
+
+.locationCard {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--space-2) var(--space-4);
+  margin-inline: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  background-color: rgb(255 255 255 / 92%);
+  border: 1px solid rgb(217 226 236 / 80%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(12px);
+}
+
+.locationLabel {
+  grid-row: 1 / 3;
+  display: inline-flex;
+  align-items: center;
+  align-self: stretch;
+  padding-right: var(--space-4);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 900;
+  text-transform: uppercase;
+  border-right: 1px solid var(--color-border);
+}
+
+.locationText,
+.locationDetail {
+  margin: 0;
+}
+
+.locationText {
+  color: var(--color-text);
+  font-weight: 800;
+}
+
+.locationDetail {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.decorativeCircle {
+  position: absolute;
+  z-index: 0;
+  top: 8%;
+  right: -7%;
+  width: min(42vw, 650px);
+  aspect-ratio: 1;
+  border: 80px solid rgb(72 202 228 / 10%);
+  border-radius: 50%;
+}
+
+.decorativeGlow {
+  position: absolute;
+  z-index: 0;
+  bottom: -25%;
+  left: 18%;
+  width: 500px;
+  height: 500px;
+  background-color: rgb(144 224 239 / 23%);
+  border-radius: 50%;
+  filter: blur(90px);
+}
+
+@media (max-width: 1050px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .content {
+    max-width: 760px;
+  }
+
+  .title {
+    max-width: 14ch;
+  }
+
+  .visual {
+    max-width: 760px;
+  }
+
+  .serviceCard {
+    min-height: 320px;
+  }
+
+  .gymCard {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .hero,
+  .container {
+    min-height: auto;
+  }
+
+  .container {
+    gap: var(--space-7);
+    padding-block: var(--space-7);
+  }
+
+  .eyebrow {
+    font-size: 0.75rem;
+  }
+
+  .title {
+    max-width: 100%;
+    font-size: clamp(2.75rem, 14vw, 4rem);
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+
+  .features {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .visual {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceCard {
+    min-height: 280px;
+  }
+
+  .locationCard {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+    margin-inline: 0;
+  }
+
+  .locationLabel {
+    grid-row: auto;
+    align-self: auto;
+    padding-right: 0;
+    padding-bottom: var(--space-2);
+    border-right: 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .decorativeCircle {
+    top: 40%;
+    right: -45%;
+    width: 480px;
+  }
+}
