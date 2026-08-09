@@ -80,8 +80,11 @@ function Header() {
           aria-label="Ir al inicio de Centro Deportivo Aquarovi"
           onClick={closeMenu}
         >
-          <span className={styles.brandName}>Aquarovi</span>
-          <span className={styles.brandDescription}>Centro Deportivo</span>
+          <img
+            className={styles.logo}
+            src="/logo/aquarovi-logo-horizontal-01.png"
+            alt="Centro Deportivo Aquarovi"
+          />
         </NavLink>
 
         <nav

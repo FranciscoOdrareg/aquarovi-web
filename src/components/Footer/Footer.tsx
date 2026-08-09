@@ -71,11 +71,14 @@ function Footer() {
             <Link
               className={styles.brand}
               to="/"
-              aria-label="Ir a la página de inicio de Centro Deportivo Aquarovi"
+              aria-label="Ir al inicio de Centro Deportivo Aquarovi"
             >
-              <span className={styles.brandName}>Aquarovi</span>
-              <span className={styles.brandDescription}>
-                Centro Deportivo
+              <span className={styles.logoPanel}>
+                <img
+                  className={styles.logo}
+                  src="/logo/aquarovi-logo-horizontal-01.png"
+                  alt="Centro Deportivo Aquarovi"
+                />
               </span>
             </Link>
 
@@ -169,8 +172,8 @@ function Footer() {
                 <span>
                   <strong>Ubicación</strong>
                   <small>
-                    200 m noreste de la Escuela Laboratorio, San Isidro, San
-                    Ramón
+                    200 m noreste de la Escuela Laboratorio, San Isidro,
+                    San Ramón
                   </small>
                 </span>
               </div>

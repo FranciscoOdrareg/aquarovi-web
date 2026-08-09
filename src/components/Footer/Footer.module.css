@@ -29,29 +29,32 @@
 }
 
 .brandColumn {
-  max-width: 360px;
+  max-width: 380px;
 }
 
 .brand {
   display: inline-flex;
-  flex-direction: column;
   margin-bottom: var(--space-5);
-  line-height: 1.1;
 }
 
-.brandName {
-  color: var(--color-white);
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 900;
-  letter-spacing: -0.05em;
+.logoPanel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.65rem;
+  background-color: rgb(255 255 255 / 92%);
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: 0.75rem;
+  box-shadow: none;
 }
 
-.brandDescription {
-  margin-top: var(--space-1);
-  color: rgb(255 255 255 / 68%);
-  font-size: var(--font-size-sm);
-  font-weight: 700;
+.logo {
+  display: block;
+  width: auto;
+  height: 52px;
+  object-fit: contain;
 }
+
 
 .description {
   max-width: 36ch;
@@ -216,6 +219,14 @@ a.contactItem:hover .contactIcon {
 
   .brandColumn {
     max-width: 100%;
+  }
+
+  .logoPanel {
+    padding: 0.4rem 0.55rem;
+  }
+
+  .logo {
+    height: 48px;
   }
 
   .description {
