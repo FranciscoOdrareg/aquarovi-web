@@ -1,0 +1,227 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 165px;
+  color: var(--color-white);
+  background:
+    linear-gradient(
+      120deg,
+      #021f35 0%,
+      var(--color-primary-dark) 48%,
+      #0077b6 100%
+    );
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  min-height: 165px;
+  place-items: center;
+  padding-block: 1.4rem;
+}
+
+.messageStage {
+  position: relative;
+  width: 100%;
+  min-height: 92px;
+}
+
+.message {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  text-align: center;
+  transform: translateY(14px) scale(0.985);
+  transition:
+    opacity 650ms ease,
+    transform 650ms ease;
+  pointer-events: none;
+}
+
+.activeMessage {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.logo {
+  display: block;
+  width: min(100%, 255px);
+  height: auto;
+  margin-bottom: 0.4rem;
+  object-fit: contain;
+}
+
+.title {
+  margin: 0 0 0.35rem;
+  color: var(--color-white);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.titleAccent {
+  color: var(--color-secondary);
+}
+
+.description {
+  max-width: 54ch;
+  margin: 0;
+  color: rgb(255 255 255 / 76%);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.brandDescription {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 0;
+  color: var(--color-secondary);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.brandDescription strong {
+  color: rgb(255 255 255 / 60%);
+  font-weight: 700;
+}
+
+.indicators {
+  position: absolute;
+  z-index: 3;
+  bottom: 0.8rem;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  transform: translateX(-50%);
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  background-color: rgb(255 255 255 / 36%);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    width 250ms ease,
+    background-color 250ms ease;
+}
+
+.activeIndicator {
+  width: 24px;
+  background-color: var(--color-secondary);
+  border-radius: var(--radius-pill);
+}
+
+.backgroundGlow {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  width: 520px;
+  height: 220px;
+  background-color: rgb(72 202 228 / 15%);
+  border-radius: 50%;
+  filter: blur(70px);
+  transform: translate(-50%, -50%);
+}
+
+.movingLine {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  overflow: hidden;
+  background-color: rgb(255 255 255 / 7%);
+}
+
+.movingLine::after {
+  position: absolute;
+  top: 0;
+  left: -30%;
+  width: 30%;
+  height: 100%;
+  content: "";
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--color-secondary),
+      transparent
+    );
+  animation: moving-line 4.5s linear infinite;
+}
+
+@keyframes moving-line {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(440%);
+  }
+}
+
+@media (max-width: 650px) {
+  .section,
+  .container {
+    min-height: 135px;
+  }
+
+  .container {
+    padding-block: 1rem;
+  }
+
+  .messageStage {
+    min-height: 78px;
+  }
+
+  .logo {
+    width: min(100%, 205px);
+    margin-bottom: 0.35rem;
+  }
+
+  .title {
+    font-size: clamp(1.7rem, 9vw, 2.5rem);
+  }
+
+  .description {
+    max-width: 34ch;
+    padding-inline: 1rem;
+    font-size: 0.8rem;
+  }
+
+  .brandDescription {
+    gap: 0.4rem;
+    font-size: 0.78rem;
+  }
+
+  .indicators {
+    bottom: 0.65rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .message {
+    transition: none;
+  }
+
+  .movingLine::after {
+    animation: none;
+  }
+}

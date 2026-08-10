@@ -20,12 +20,12 @@
   grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
   align-items: center;
   gap: clamp(3rem, 7vw, 7rem);
-  padding-block: clamp(4rem, 9vw, 7rem);
+  padding-block: clamp(2rem, 4vw, 3rem);
 }
 
 .content {
   max-width: 680px;
-  transform: translateY(-2.5rem);
+  transform: translateY(-6.5rem);
 }
 
 .eyebrow {
@@ -155,9 +155,14 @@
 .visual {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
   transform: translateY(-2.5rem);
+}
+
+.galleryWrapper {
+  min-width: 0;
+  width: 100%;
 }
 
 .serviceCard {
@@ -244,49 +249,6 @@
   color: rgb(255 255 255 / 84%);
   font-size: var(--font-size-sm);
   line-height: 1.65;
-}
-
-.locationCard {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  gap: var(--space-2) var(--space-4);
-  margin-inline: var(--space-5);
-  padding: var(--space-4) var(--space-5);
-  background-color: rgb(255 255 255 / 92%);
-  border: 1px solid rgb(217 226 236 / 80%);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  backdrop-filter: blur(12px);
-}
-
-.locationLabel {
-  grid-row: 1 / 3;
-  display: inline-flex;
-  align-items: center;
-  align-self: stretch;
-  padding-right: var(--space-4);
-  color: var(--color-primary);
-  font-size: var(--font-size-sm);
-  font-weight: 900;
-  text-transform: uppercase;
-  border-right: 1px solid var(--color-border);
-}
-
-.locationText,
-.locationDetail {
-  margin: 0;
-}
-
-.locationText {
-  color: var(--color-text);
-  font-weight: 800;
-}
-
-.locationDetail {
-  color: var(--color-text-muted);
-  font-size: var(--font-size-sm);
 }
 
 .decorativeCircle {
@@ -388,21 +350,6 @@
 
   .serviceCard {
     min-height: 280px;
-  }
-
-  .locationCard {
-    grid-column: auto;
-    grid-template-columns: 1fr;
-    margin-inline: 0;
-  }
-
-  .locationLabel {
-    grid-row: auto;
-    align-self: auto;
-    padding-right: 0;
-    padding-bottom: var(--space-2);
-    border-right: 0;
-    border-bottom: 1px solid var(--color-border);
   }
 
   .decorativeCircle {
