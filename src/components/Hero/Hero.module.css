@@ -25,6 +25,7 @@
 
 .content {
   max-width: 680px;
+  transform: translateY(-2.5rem);
 }
 
 .eyebrow {
@@ -156,6 +157,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-4);
+  transform: translateY(-2.5rem);
 }
 
 .serviceCard {
@@ -321,6 +323,11 @@
 
   .title {
     max-width: 14ch;
+  }
+
+  .content,
+  .visual {
+    transform: none;
   }
 
   .visual {

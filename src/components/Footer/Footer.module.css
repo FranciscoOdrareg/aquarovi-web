@@ -8,7 +8,7 @@
       145deg,
       #021f35 0%,
       var(--color-primary-dark) 58%,
-      #004f75 100%
+      #005b86 100%
     );
 }
 
@@ -20,135 +20,103 @@
 .mainContent {
   display: grid;
   grid-template-columns:
-    minmax(260px, 1.2fr)
-    minmax(140px, 0.6fr)
-    minmax(170px, 0.7fr)
+    minmax(190px, 0.8fr)
+    minmax(240px, 1fr)
     minmax(260px, 1fr);
-  gap: clamp(2.5rem, 5vw, 5rem);
-  padding-block: clamp(4rem, 8vw, 6.5rem);
-}
-
-.brandColumn {
-  max-width: 380px;
-}
-
-.brand {
-  display: inline-flex;
-  margin-bottom: var(--space-5);
-}
-
-.logoPanel {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.45rem 0.65rem;
-  background-color: rgb(255 255 255 / 92%);
-  border: 1px solid rgb(255 255 255 / 14%);
-  border-radius: 0.75rem;
-  box-shadow: none;
+  gap: clamp(2rem, 4vw, 4.5rem);
+  padding-block: 1rem;
 }
 
-.logo {
-  display: block;
-  width: auto;
-  height: 52px;
-  object-fit: contain;
-}
-
-
-.description {
-  max-width: 36ch;
-  margin-bottom: var(--space-6);
-  color: rgb(255 255 255 / 72%);
-  line-height: 1.75;
-}
-
-.whatsappButton {
-  display: inline-flex;
-  min-height: 50px;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  padding-inline: var(--space-4);
-  color: #043950;
-  font-size: var(--font-size-sm);
-  font-weight: 900;
-  background-color: var(--color-white);
-  border-radius: var(--radius-pill);
-  box-shadow: var(--shadow-md);
-}
-
-.whatsappButton:hover {
-  box-shadow: 0 16px 34px rgb(0 0 0 / 22%);
-  transform: translateY(-3px);
-}
-
-.whatsappButton svg {
-  width: 18px;
-  height: 18px;
+.navigationColumn,
+.contactColumn {
+  align-self: center;
 }
 
 .columnTitle {
-  margin-bottom: var(--space-5);
+  margin-bottom: 0.85rem;
   color: var(--color-white);
-  font-size: var(--font-size-base);
+  font-size: 0.9rem;
   font-weight: 900;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .linkList {
   display: grid;
-  gap: var(--space-3);
+  gap: 0.55rem;
 }
 
 .footerLink {
   display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   width: fit-content;
-  color: rgb(255 255 255 / 70%);
-  font-size: var(--font-size-sm);
+  color: rgb(255 255 255 / 80%);
+  font-size: 0.82rem;
   font-weight: 700;
 }
 
 .footerLink:hover {
   color: var(--color-white);
-  transform: translateX(4px);
+  transform: translateX(3px);
+}
+
+.linkDot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  background-color: var(--color-secondary);
+  border-radius: 50%;
+}
+
+.brandColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  display: block;
+  width: min(100%, 285px);
+  height: auto;
+  object-fit: contain;
 }
 
 .contactList {
   display: grid;
-  gap: var(--space-4);
+  gap: 0.65rem;
   font-style: normal;
 }
 
 .contactItem {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-3);
+  gap: 0.65rem;
   color: inherit;
-}
-
-a.contactItem:hover .contactIcon {
-  color: var(--color-primary-dark);
-  background-color: var(--color-white);
 }
 
 .contactIcon {
   display: inline-flex;
-  width: 42px;
-  height: 42px;
-  flex: 0 0 42px;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
   align-items: center;
   justify-content: center;
-  color: var(--color-white);
-  background-color: rgb(255 255 255 / 10%);
-  border: 1px solid rgb(255 255 255 / 14%);
-  border-radius: var(--radius-sm);
+  color: var(--color-secondary);
+  background-color: transparent;
+  border: 0;
 }
 
 .contactIcon svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .contactItem span:last-child {
@@ -158,104 +126,107 @@ a.contactItem:hover .contactIcon {
 
 .contactItem strong {
   color: var(--color-white);
-  font-size: var(--font-size-sm);
+  font-size: 0.82rem;
 }
 
 .contactItem small {
-  margin-top: var(--space-1);
-  color: rgb(255 255 255 / 66%);
-  font-size: 0.8rem;
-  line-height: 1.55;
+  margin-top: 0.08rem;
+  color: rgb(255 255 255 / 68%);
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+a.contactItem:hover .contactIcon {
+  color: var(--color-white);
 }
 
 .bottomBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-5);
-  padding-block: var(--space-5);
+  gap: var(--space-4);
+  padding-block: 0.65rem;
   border-top: 1px solid rgb(255 255 255 / 12%);
 }
 
-.copyright,
-.bottomMessage {
+.bottomBar p {
   margin: 0;
-  color: rgb(255 255 255 / 58%);
-  font-size: 0.78rem;
-}
-
-.bottomMessage {
-  text-align: right;
+  color: rgb(255 255 255 / 54%);
+  font-size: 0.7rem;
 }
 
 .decoration {
   position: absolute;
   z-index: 0;
-  right: -220px;
-  bottom: -270px;
-  width: 620px;
-  height: 620px;
-  border: 90px solid rgb(255 255 255 / 4%);
+  right: -180px;
+  bottom: -250px;
+  width: 520px;
+  height: 520px;
+  border: 70px solid rgb(255 255 255 / 3%);
   border-radius: 50%;
   pointer-events: none;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 950px) {
   .mainContent {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-7);
+    padding-block: 2rem;
   }
 
   .brandColumn {
-    max-width: 440px;
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .navigationColumn {
+    grid-column: 1;
+  }
+
+  .contactColumn {
+    grid-column: 2;
+  }
+
+  .logo {
+    width: min(100%, 220px);
   }
 }
 
 @media (max-width: 680px) {
   .mainContent {
     grid-template-columns: 1fr;
-    gap: var(--space-7);
-    padding-block: var(--space-8);
+    gap: var(--space-6);
+    padding-block: 2rem;
+  }
+
+  .brandColumn,
+  .navigationColumn,
+  .contactColumn {
+    grid-column: auto;
   }
 
   .brandColumn {
-    max-width: 100%;
-  }
-
-  .logoPanel {
-    padding: 0.4rem 0.55rem;
+    grid-row: auto;
+    justify-content: flex-start;
   }
 
   .logo {
-    height: 48px;
-  }
-
-  .description {
-    max-width: 45ch;
-  }
-
-  .whatsappButton {
-    width: 100%;
+    width: min(100%, 210px);
   }
 
   .bottomBar {
     align-items: flex-start;
     flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .bottomMessage {
-    text-align: left;
+    gap: 0.35rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .whatsappButton,
   .footerLink,
   .contactIcon {
     transition: none;
   }
 
-  .whatsappButton:hover,
   .footerLink:hover {
     transform: none;
   }
