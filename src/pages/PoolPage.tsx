@@ -6,10 +6,8 @@ import {
   HeartHandshake,
   MessageCircle,
   PersonStanding,
-  ShieldCheck,
   Sparkles,
   ThermometerSun,
-  Users,
   Waves,
 } from 'lucide-react'
 import { Link } from 'react-router'
@@ -24,29 +22,38 @@ const whatsappUrl = `https://wa.me/50687081829?text=${encodeURIComponent(
 
 const poolBenefits = [
   {
-    title: 'Piscina climatizada',
+    title: 'Fuerza',
     description:
-      'Disfruta actividades acuáticas en una piscina con temperatura agradable.',
-    icon: ThermometerSun,
+      'Fortalece diferentes grupos musculares mediante el movimiento en el agua.',
+    icon: PersonStanding,
   },
   {
-    title: 'Techada y cerrada',
+    title: 'Resistencia',
     description:
-      'Un espacio protegido para disfrutar las clases con mayor comodidad.',
-    icon: ShieldCheck,
-  },
-  {
-    title: 'Opciones para distintas edades',
-    description:
-      'Actividades para niños, adultos y personas adultas mayores.',
-    icon: Users,
-  },
-  {
-    title: 'Acompañamiento de instructor',
-    description:
-      'Orientación durante las clases para avanzar con confianza y seguridad.',
+      'Trabaja tu capacidad física y cardiovascular de una forma dinámica.',
     icon: HeartHandshake,
   },
+  {
+    title: 'Movilidad',
+    description:
+      'Realiza movimientos con menor impacto y favorece la flexibilidad corporal.',
+    icon: Sparkles,
+  },
+  {
+    title: 'Coordinación',
+    description:
+      'Desarrolla control corporal y coordinación a través del movimiento.',
+    icon: Waves,
+  },
+]
+
+const waterSessionBenefits = [
+  'Mejorar tu resistencia física',
+  'Fortalecer diferentes grupos musculares',
+  'Trabajar movilidad y flexibilidad',
+  'Favorecer la coordinación',
+  'Mantenerte activo con menor impacto',
+  'Disfrutar una actividad que favorece el bienestar',
 ]
 
 const activities = [
@@ -147,7 +154,10 @@ function PoolPage() {
               </Link>
             </div>
 
-            <ul className={styles.heroFeatures}>
+            <ul
+              className={styles.heroFeatures}
+              aria-label="Características principales de la piscina"
+            >
               <li>
                 <Check aria-hidden="true" />
                 Piscina climatizada
@@ -175,6 +185,7 @@ function PoolPage() {
 
               <div>
                 <span className={styles.visualLabel}>Disfruta</span>
+
                 <h2 className={styles.visualTitle}>Piscina</h2>
 
                 <p className={styles.visualText}>
@@ -189,6 +200,7 @@ function PoolPage() {
 
               <div>
                 <strong>Temperatura agradable</strong>
+
                 <span>
                   Piscina climatizada para disfrutar las actividades con mayor
                   comodidad.
@@ -206,45 +218,78 @@ function PoolPage() {
         aria-labelledby="pool-benefits-title"
       >
         <div className="container">
-          <div className={styles.sectionIntroduction}>
-            <div>
+          <div className={styles.wellnessOverview}>
+            <div className={styles.wellnessIntroduction}>
               <span className={styles.sectionEyebrow}>
-                Comodidad y acompañamiento
+                Piscina y bienestar
               </span>
 
-              <h2 className={styles.sectionTitle} id="pool-benefits-title">
-                Un espacio pensado para disfrutar el agua
+              <h2
+                className={styles.wellnessTitle}
+                id="pool-benefits-title"
+              >
+                Mucho más que nadar
               </h2>
+
+              <p className={styles.wellnessDescription}>
+                La natación y las actividades acuáticas permiten trabajar el
+                cuerpo de una manera diferente, combinando movimiento,
+                resistencia y bienestar en un entorno de menor impacto.
+              </p>
             </div>
 
-            <p className={styles.sectionDescription}>
-              La piscina de Aquarovi reúne condiciones que permiten desarrollar
-              diferentes actividades acuáticas en un ambiente cercano y
-              familiar.
-            </p>
+            <div
+              className={styles.wellnessBenefits}
+              aria-label="Beneficios de las actividades acuáticas"
+            >
+              {poolBenefits.map((benefit) => {
+                const Icon = benefit.icon
+
+                return (
+                  <article
+                    className={styles.wellnessBenefit}
+                    key={benefit.title}
+                  >
+                    <span
+                      className={styles.wellnessIcon}
+                      aria-hidden="true"
+                    >
+                      <Icon strokeWidth={1.7} />
+                    </span>
+
+                    <div>
+                      <h3>{benefit.title}</h3>
+                      <p>{benefit.description}</p>
+                    </div>
+                  </article>
+                )
+              })}
+            </div>
           </div>
 
-          <div className={styles.benefitsGrid}>
-            {poolBenefits.map((benefit, index) => {
-              const Icon = benefit.icon
+          <div className={styles.sessionBenefits}>
+            <div className={styles.sessionBenefitsHeading}>
+              <span className={styles.sessionBenefitsEyebrow}>
+                Movimiento dentro del agua
+              </span>
 
-              return (
-                <article className={styles.benefitCard} key={benefit.title}>
-                  <div className={styles.cardHeader}>
-                    <span className={styles.iconContainer} aria-hidden="true">
-                      <Icon strokeWidth={1.8} />
-                    </span>
+              <h3>Una sesión en el agua puede ayudarte a:</h3>
+            </div>
 
-                    <span className={styles.cardNumber}>
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                  </div>
+            <ul
+              className={styles.sessionBenefitsList}
+              aria-label="Beneficios de una sesión en el agua"
+            >
+              {waterSessionBenefits.map((benefit) => (
+                <li key={benefit}>
+                  <span aria-hidden="true">
+                    <Check strokeWidth={2.5} />
+                  </span>
 
-                  <h3>{benefit.title}</h3>
-                  <p>{benefit.description}</p>
-                </article>
-              )
-            })}
+                  {benefit}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -284,17 +329,25 @@ function PoolPage() {
                 >
                   <div className={styles.activityTop}>
                     <span>{activity.number}</span>
+
                     <Icon aria-hidden="true" strokeWidth={1.7} />
                   </div>
 
                   <div className={styles.activityContent}>
                     <h3>{activity.title}</h3>
+
                     <p>{activity.description}</p>
 
-                    <ul aria-label={`Características de ${activity.title}`}>
+                    <ul
+                      aria-label={`Características de ${activity.title}`}
+                    >
                       {activity.features.map((feature) => (
                         <li key={feature}>
-                          <Check aria-hidden="true" strokeWidth={2.5} />
+                          <Check
+                            aria-hidden="true"
+                            strokeWidth={2.5}
+                          />
+
                           {feature}
                         </li>
                       ))}
@@ -313,7 +366,10 @@ function PoolPage() {
       >
         <div className={`container ${styles.olderAdultsContainer}`}>
           <div className={styles.olderAdultsVisual}>
-            <span className={styles.olderAdultsIcon} aria-hidden="true">
+            <span
+              className={styles.olderAdultsIcon}
+              aria-hidden="true"
+            >
               <HeartHandshake strokeWidth={1.6} />
             </span>
 
@@ -330,7 +386,10 @@ function PoolPage() {
               convertirse en una alternativa agradable para mantenerse activo.
             </p>
 
-            <div className={styles.olderAdultsDecoration} aria-hidden="true" />
+            <div
+              className={styles.olderAdultsDecoration}
+              aria-hidden="true"
+            />
           </div>
 
           <div className={styles.olderAdultsContent}>
@@ -338,7 +397,10 @@ function PoolPage() {
               Actividades adaptadas
             </span>
 
-            <h2 className={styles.sectionTitle} id="older-adults-title">
+            <h2
+              className={styles.sectionTitle}
+              id="older-adults-title"
+            >
               Mantente activo en un ambiente cómodo
             </h2>
 
@@ -352,6 +414,7 @@ function PoolPage() {
                 <span aria-hidden="true">
                   <Check strokeWidth={2.5} />
                 </span>
+
                 Ejercicio de menor impacto para las articulaciones.
               </li>
 
@@ -359,6 +422,7 @@ function PoolPage() {
                 <span aria-hidden="true">
                   <Check strokeWidth={2.5} />
                 </span>
+
                 Acompañamiento durante la actividad.
               </li>
 
@@ -366,6 +430,7 @@ function PoolPage() {
                 <span aria-hidden="true">
                   <Check strokeWidth={2.5} />
                 </span>
+
                 Trabajo de movilidad, fuerza y condición física.
               </li>
 
@@ -373,6 +438,7 @@ function PoolPage() {
                 <span aria-hidden="true">
                   <Check strokeWidth={2.5} />
                 </span>
+
                 Ambiente cercano y respetuoso.
               </li>
             </ul>
@@ -397,16 +463,19 @@ function PoolPage() {
         <div className={`container ${styles.preparationContainer}`}>
           <div className={styles.preparationContent}>
             <span className={styles.preparationEyebrow}>
-              Antes de ingresar
+              Antes de tu clase
             </span>
 
-            <h2 className={styles.preparationTitle} id="preparation-title">
-              Ayúdanos a mantener una piscina limpia y agradable
+            <h2
+              className={styles.preparationTitle}
+              id="preparation-title"
+            >
+              Todo listo para disfrutar la piscina
             </h2>
 
             <p className={styles.preparationDescription}>
-              Estas recomendaciones permiten cuidar el agua y mejorar la
-              experiencia de todas las personas.
+              Queremos que tu experiencia sea cómoda desde el primer momento.
+              Ten en cuenta estas recomendaciones antes de ingresar al agua.
             </p>
 
             <ul className={styles.preparationList}>
@@ -415,6 +484,7 @@ function PoolPage() {
                   <span aria-hidden="true">
                     <Check strokeWidth={2.5} />
                   </span>
+
                   {item}
                 </li>
               ))}
@@ -430,47 +500,27 @@ function PoolPage() {
               Horarios y disponibilidad
             </span>
 
-            <h3>Consulta el espacio que mejor se adapte a ti</h3>
+            <h3>Encuentra el horario ideal para ti</h3>
 
             <p>
-              Los horarios pueden variar según la actividad, la edad, el nivel
-              y la disponibilidad de espacios.
+              Tenemos opciones según la actividad, edad, nivel y
+              disponibilidad de espacios.
             </p>
 
-            <a href={whatsappUrl} target="_blank" rel="noreferrer">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
               Consultar horarios
               <ArrowRight aria-hidden="true" strokeWidth={2} />
             </a>
           </aside>
 
-          <div className={styles.preparationDecoration} aria-hidden="true" />
-        </div>
-      </section>
-
-      <section className={`section ${styles.finalCta}`}>
-        <div className={`container ${styles.finalCtaContainer}`}>
-          <div>
-            <span className={styles.finalCtaEyebrow}>
-              Tu experiencia puede comenzar aquí
-            </span>
-
-            <h2>Encuentra la actividad acuática ideal para ti</h2>
-
-            <p>
-              Escríbenos para conocer horarios, espacios disponibles y la
-              modalidad que mejor se adapte a tu edad y objetivos.
-            </p>
-          </div>
-
-          <a
-            className={styles.finalCtaButton}
-            href={whatsappUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <MessageCircle aria-hidden="true" strokeWidth={2} />
-            Hablar por WhatsApp
-          </a>
+          <div
+            className={styles.preparationDecoration}
+            aria-hidden="true"
+          />
         </div>
       </section>
     </main>

@@ -152,8 +152,16 @@
   padding: clamp(2rem, 4vw, 3rem);
   color: var(--color-white);
   background:
-    linear-gradient(155deg, rgb(255 255 255 / 12%), transparent 58%),
-    linear-gradient(145deg, #00b4d8, #0077b6);
+    linear-gradient(
+      155deg,
+      rgb(255 255 255 / 12%),
+      transparent 58%
+    ),
+    linear-gradient(
+      145deg,
+      #00b4d8,
+      #0077b6
+    );
   border-radius: calc(var(--radius-lg) + 1rem);
   box-shadow: 0 30px 70px rgb(0 119 182 / 25%);
 }
@@ -279,17 +287,185 @@
   border-radius: 50%;
 }
 
+/* ==========================================
+   PISCINA Y BIENESTAR
+   ========================================== */
+
 .benefits {
+  position: relative;
+  overflow: hidden;
   background-color: var(--color-white);
 }
 
-.sectionIntroduction {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.65fr);
-  align-items: end;
-  gap: var(--space-7);
-  margin-bottom: var(--space-7);
+.benefits::before {
+  position: absolute;
+  top: -180px;
+  left: -180px;
+  width: 480px;
+  height: 480px;
+  content: "";
+  border: 75px solid rgb(72 202 228 / 7%);
+  border-radius: 50%;
+  pointer-events: none;
 }
+
+.wellnessOverview {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: clamp(3rem, 7vw, 7rem);
+}
+
+.wellnessIntroduction {
+  max-width: 580px;
+}
+
+.wellnessTitle {
+  max-width: 10ch;
+  margin-bottom: var(--space-5);
+  color: var(--color-text);
+  font-size: clamp(2.75rem, 5vw, 4.8rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.wellnessDescription {
+  max-width: 52ch;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+  line-height: 1.75;
+}
+
+.wellnessBenefits {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6) var(--space-7);
+}
+
+.wellnessBenefit {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: var(--space-4);
+}
+
+.wellnessIcon {
+  display: inline-flex;
+  width: 74px;
+  height: 74px;
+  flex: 0 0 74px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  background:
+    linear-gradient(
+      145deg,
+      rgb(218 247 252 / 90%),
+      rgb(239 252 253 / 95%)
+    );
+  border: 1px solid rgb(0 180 216 / 14%);
+  border-radius: 50%;
+}
+
+.wellnessIcon svg {
+  width: 34px;
+  height: 34px;
+}
+
+.wellnessBenefit h3 {
+  margin-bottom: var(--space-2);
+  color: var(--color-primary-dark);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.wellnessBenefit p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+}
+
+.sessionBenefits {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+  align-items: center;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  margin-top: clamp(4rem, 7vw, 6rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--color-border);
+}
+
+.sessionBenefitsHeading {
+  max-width: 460px;
+}
+
+.sessionBenefitsEyebrow {
+  display: block;
+  margin-bottom: var(--space-3);
+  color: var(--color-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sessionBenefitsHeading h3 {
+  max-width: 12ch;
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+}
+
+.sessionBenefitsList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4) var(--space-6);
+}
+
+.sessionBenefitsList li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: var(--color-text);
+  font-weight: 750;
+  line-height: 1.55;
+}
+
+.sessionBenefitsList li span {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  background:
+    linear-gradient(
+      145deg,
+      var(--color-secondary),
+      var(--color-primary)
+    );
+  border-radius: 50%;
+}
+
+.sessionBenefitsList li svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ==========================================
+   ACTIVIDADES
+   ========================================== */
 
 .sectionTitle {
   max-width: 15ch;
@@ -307,74 +483,6 @@
   margin-bottom: 0;
   color: var(--color-text-muted);
   font-size: var(--font-size-lg);
-  line-height: 1.75;
-}
-
-.benefitsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-4);
-}
-
-.benefitCard {
-  min-height: 280px;
-  padding: var(--space-5);
-  background-color: var(--color-background);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base),
-    border-color var(--transition-base);
-}
-
-.benefitCard:hover {
-  border-color: var(--color-primary-light);
-  box-shadow: var(--shadow-md);
-  transform: translateY(-6px);
-}
-
-.cardHeader {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: var(--space-6);
-}
-
-.iconContainer {
-  display: inline-flex;
-  width: 56px;
-  height: 56px;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-secondary);
-  background-color: rgb(144 224 239 / 30%);
-  border-radius: var(--radius-md);
-}
-
-.iconContainer svg {
-  width: 27px;
-  height: 27px;
-}
-
-.cardNumber {
-  color: var(--color-border);
-  font-size: var(--font-size-sm);
-  font-weight: 900;
-  letter-spacing: 0.12em;
-}
-
-.benefitCard h3 {
-  margin-bottom: var(--space-3);
-  font-size: 1.35rem;
-  letter-spacing: -0.025em;
-  line-height: 1.25;
-}
-
-.benefitCard p {
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: var(--font-size-sm);
   line-height: 1.75;
 }
 
@@ -418,12 +526,20 @@
 
 .deepCard {
   background:
-    linear-gradient(150deg, rgb(2 62 138 / 98%), rgb(0 119 182 / 96%));
+    linear-gradient(
+      150deg,
+      rgb(2 62 138 / 98%),
+      rgb(0 119 182 / 96%)
+    );
 }
 
 .lightCard {
   background:
-    linear-gradient(150deg, rgb(0 180 216 / 98%), rgb(0 119 182 / 96%));
+    linear-gradient(
+      150deg,
+      rgb(0 180 216 / 98%),
+      rgb(0 119 182 / 96%)
+    );
 }
 
 .activityTop {
@@ -483,6 +599,10 @@
   border-radius: 50%;
 }
 
+/* ==========================================
+   ADULTOS MAYORES
+   ========================================== */
+
 .olderAdults {
   background-color: var(--color-white);
 }
@@ -502,7 +622,11 @@
   padding: clamp(2rem, 5vw, 4rem);
   color: var(--color-white);
   background:
-    linear-gradient(145deg, var(--color-secondary), var(--color-primary));
+    linear-gradient(
+      145deg,
+      var(--color-secondary),
+      var(--color-primary)
+    );
   border-radius: calc(var(--radius-lg) + 0.75rem);
   box-shadow: var(--shadow-md);
 }
@@ -605,6 +729,10 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* ==========================================
+   ANTES DE TU CLASE
+   ========================================== */
+
 .preparation {
   background-color: var(--color-background);
 }
@@ -613,20 +741,21 @@
   position: relative;
   isolation: isolate;
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.7fr);
   align-items: center;
-  gap: clamp(3rem, 7vw, 7rem);
+  gap: clamp(2.5rem, 5vw, 5rem);
   overflow: hidden;
-  padding: clamp(2rem, 5vw, 4.5rem);
+  padding: clamp(2.5rem, 4vw, 3.5rem);
   color: var(--color-white);
   background:
     linear-gradient(
       125deg,
       #021f35 0%,
-      var(--color-primary-dark) 52%,
+      var(--color-primary-dark) 55%,
       var(--color-secondary) 100%
     );
   border-radius: calc(var(--radius-lg) + 0.75rem);
+  box-shadow: var(--shadow-md);
 }
 
 .preparationContent {
@@ -635,23 +764,24 @@
 }
 
 .preparationEyebrow {
-  color: rgb(255 255 255 / 70%);
+  color: rgb(255 255 255 / 68%);
 }
 
 .preparationTitle {
-  max-width: 15ch;
+  max-width: 13ch;
   margin-bottom: var(--space-4);
-  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  color: var(--color-white);
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
   letter-spacing: -0.055em;
-  line-height: 1.03;
+  line-height: 1.02;
 }
 
 .preparationDescription {
-  max-width: 58ch;
+  max-width: 54ch;
   margin-bottom: var(--space-5);
   color: rgb(255 255 255 / 80%);
-  font-size: var(--font-size-lg);
-  line-height: 1.75;
+  font-size: var(--font-size-base);
+  line-height: 1.7;
 }
 
 .preparationList {
@@ -663,16 +793,17 @@
   display: flex;
   align-items: flex-start;
   gap: var(--space-3);
-  color: rgb(255 255 255 / 92%);
+  color: rgb(255 255 255 / 94%);
+  font-size: var(--font-size-sm);
   font-weight: 700;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 .preparationList li span {
   display: inline-flex;
-  width: 25px;
-  height: 25px;
-  flex: 0 0 25px;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
   align-items: center;
   justify-content: center;
   color: var(--color-primary-dark);
@@ -681,35 +812,36 @@
 }
 
 .preparationList svg {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
 }
 
 .scheduleCard {
   position: relative;
   z-index: 2;
-  padding: var(--space-6);
+  padding: clamp(1.75rem, 3vw, 2.4rem);
   color: var(--color-text);
-  background-color: rgb(255 255 255 / 95%);
+  background-color: rgb(255 255 255 / 96%);
+  border: 1px solid rgb(255 255 255 / 55%);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
 }
 
 .scheduleIcon {
   display: inline-flex;
-  width: 62px;
-  height: 62px;
+  width: 54px;
+  height: 54px;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
   color: var(--color-secondary);
   background-color: rgb(144 224 239 / 30%);
   border-radius: var(--radius-md);
 }
 
 .scheduleIcon svg {
-  width: 30px;
-  height: 30px;
+  width: 27px;
+  height: 27px;
 }
 
 .scheduleLabel {
@@ -723,20 +855,25 @@
 }
 
 .scheduleCard h3 {
+  max-width: 13ch;
   margin-bottom: var(--space-3);
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: var(--color-text);
+  font-size: clamp(1.7rem, 2.7vw, 2.35rem);
   letter-spacing: -0.035em;
+  line-height: 1.15;
 }
 
 .scheduleCard p {
+  max-width: 38ch;
   margin-bottom: var(--space-5);
   color: var(--color-text-muted);
-  line-height: 1.7;
+  font-size: var(--font-size-sm);
+  line-height: 1.65;
 }
 
 .scheduleCard a {
   display: inline-flex;
-  min-height: 50px;
+  min-height: 48px;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
@@ -746,10 +883,12 @@
   font-weight: 900;
   background-color: var(--color-secondary);
   border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
 }
 
 .scheduleCard a:hover {
   background-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
   transform: translateY(-3px);
 }
 
@@ -760,55 +899,20 @@
 
 .preparationDecoration {
   position: absolute;
-  top: -180px;
-  right: 22%;
+  z-index: 0;
+  top: -210px;
+  right: 28%;
   width: 430px;
   height: 430px;
   border: 65px solid rgb(255 255 255 / 6%);
   border-radius: 50%;
+  pointer-events: none;
 }
 
-.finalCta {
-  background-color: var(--color-white);
-}
 
-.finalCtaContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-7);
-  padding: clamp(2rem, 5vw, 4rem);
-  background:
-    linear-gradient(
-      130deg,
-      rgb(239 252 253),
-      rgb(218 247 252)
-    );
-  border: 1px solid rgb(0 180 216 / 15%);
-  border-radius: calc(var(--radius-lg) + 0.5rem);
-}
-
-.finalCtaContainer h2 {
-  max-width: 17ch;
-  margin-bottom: var(--space-3);
-  font-size: clamp(2.2rem, 4vw, 3.7rem);
-  letter-spacing: -0.05em;
-  line-height: 1.05;
-}
-
-.finalCtaContainer p {
-  max-width: 62ch;
-  margin: 0;
-  color: var(--color-text-muted);
-  line-height: 1.7;
-}
-
-.finalCtaButton {
-  flex-shrink: 0;
-  color: var(--color-white);
-  background-color: var(--color-secondary);
-  box-shadow: var(--shadow-md);
-}
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
 
 @media (max-width: 1050px) {
   .heroContainer,
@@ -821,17 +925,38 @@
     max-width: 760px;
   }
 
-  .sectionIntroduction {
+  .wellnessOverview {
     grid-template-columns: 1fr;
-    gap: var(--space-4);
+    gap: var(--space-7);
   }
 
-  .benefitsGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .wellnessIntroduction {
+    max-width: 760px;
+  }
+
+  .wellnessTitle {
+    max-width: 14ch;
+  }
+
+  .wellnessBenefits {
+    max-width: 850px;
+  }
+
+  .sessionBenefits {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .sessionBenefitsHeading {
+    max-width: 680px;
+  }
+
+  .sessionBenefitsHeading h3 {
+    max-width: 18ch;
   }
 
   .scheduleCard {
-    max-width: 680px;
+    max-width: 620px;
   }
 }
 
@@ -859,17 +984,17 @@
     gap: var(--space-3);
   }
 
-  .activitiesGrid {
+  .wellnessBenefits {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .sessionBenefitsList {
     grid-template-columns: 1fr;
   }
 
-  .finalCtaContainer {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .finalCtaButton {
-    width: 100%;
+  .activitiesGrid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -889,12 +1014,39 @@
     max-width: none;
   }
 
-  .benefitsGrid {
-    grid-template-columns: 1fr;
+  .wellnessTitle {
+    max-width: 100%;
+    font-size: clamp(2.5rem, 13vw, 3.7rem);
   }
 
-  .benefitCard {
-    min-height: auto;
+  .wellnessDescription {
+    font-size: var(--font-size-base);
+  }
+
+  .wellnessBenefit {
+    grid-template-columns: 62px 1fr;
+    gap: var(--space-3);
+  }
+
+  .wellnessIcon {
+    width: 62px;
+    height: 62px;
+    flex-basis: 62px;
+  }
+
+  .wellnessIcon svg {
+    width: 29px;
+    height: 29px;
+  }
+
+  .sessionBenefits {
+    margin-top: var(--space-8);
+    padding-top: var(--space-7);
+  }
+
+  .sessionBenefitsHeading h3 {
+    max-width: 100%;
+    font-size: clamp(2rem, 10vw, 3rem);
   }
 
   .sectionTitle,
@@ -912,13 +1064,16 @@
     padding: var(--space-6) var(--space-5);
   }
 
+  .scheduleCard {
+    max-width: none;
+  }
+
   .scheduleCard a {
     width: 100%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .benefitCard,
   .primaryButton,
   .secondaryButton,
   .olderAdultsButton,
@@ -927,7 +1082,6 @@
     transition: none;
   }
 
-  .benefitCard:hover,
   .primaryButton:hover,
   .secondaryButton:hover,
   .olderAdultsButton:hover,
