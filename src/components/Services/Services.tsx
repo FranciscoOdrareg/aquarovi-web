@@ -7,11 +7,11 @@ const services = [
     eyebrow: 'Fuerza y bienestar',
     title: 'Gimnasio',
     description:
-      'Entrena en un espacio equipado para trabajar fuerza, resistencia y condición física con acompañamiento durante tu proceso.',
+      'Entrena en un espacio equipado para trabajar fuerza, resistencia y condición física de acuerdo con tus objetivos.',
     features: [
       'Equipo para entrenamiento completo',
       'Rutinas y valoraciones corporales',
-      'Acompañamiento semi-personalizado',
+      'Orientación para tu entrenamiento',
     ],
     link: '/gimnasio',
     linkLabel: 'Conocer el gimnasio',
@@ -41,12 +41,15 @@ function Services() {
       aria-labelledby="services-title"
     >
       <div className="container">
-        <div className={styles.introduction}>
+        <div className={styles.heading}>
           <div>
-            <span className={styles.eyebrow}>Todo en un mismo lugar</span>
+            <span className={styles.eyebrow}>
+              Todo en un mismo lugar
+            </span>
 
             <h2 className={styles.title} id="services-title">
-              Elige cómo quieres sentirte mejor
+              Dos formas de moverte. Un mismo objetivo:{' '}
+              <span className={styles.titleAccent}>sentirte mejor.</span>
             </h2>
           </div>
 
@@ -68,11 +71,15 @@ function Services() {
             >
               <div className={styles.cardHeader}>
                 <span className={styles.number}>{service.number}</span>
-                <span className={styles.cardEyebrow}>{service.eyebrow}</span>
+                <span className={styles.cardEyebrow}>
+                  {service.eyebrow}
+                </span>
               </div>
 
               <div className={styles.cardBody}>
-                <h3 className={styles.cardTitle}>{service.title}</h3>
+                <h3 className={styles.cardTitle}>
+                  {service.title}
+                </h3>
 
                 <p className={styles.cardDescription}>
                   {service.description}
@@ -83,8 +90,14 @@ function Services() {
                   aria-label={`Beneficios de ${service.title}`}
                 >
                   {service.features.map((feature) => (
-                    <li className={styles.featureItem} key={feature}>
-                      <span className={styles.featureIcon} aria-hidden="true">
+                    <li
+                      className={styles.featureItem}
+                      key={feature}
+                    >
+                      <span
+                        className={styles.featureIcon}
+                        aria-hidden="true"
+                      >
                         ✓
                       </span>
 
@@ -94,14 +107,24 @@ function Services() {
                 </ul>
               </div>
 
-              <Link className={styles.cardLink} to={service.link}>
+              <Link
+                className={styles.cardLink}
+                to={service.link}
+              >
                 {service.linkLabel}
-                <span className={styles.arrow} aria-hidden="true">
+
+                <span
+                  className={styles.arrow}
+                  aria-hidden="true"
+                >
                   →
                 </span>
               </Link>
 
-              <div className={styles.decoration} aria-hidden="true" />
+              <div
+                className={styles.decoration}
+                aria-hidden="true"
+              />
             </article>
           ))}
         </div>

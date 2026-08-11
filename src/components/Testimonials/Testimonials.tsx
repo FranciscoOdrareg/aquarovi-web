@@ -1,29 +1,30 @@
 import { MessageCircle, Quote, Star } from 'lucide-react'
 import styles from './Testimonials.module.css'
 
-/*
- * CONTENIDO TEMPORAL:
- * Sustituir estos testimonios por opiniones reales y autorizadas
- * antes de publicar el sitio web.
- */
 const testimonials = [
   {
-    name: 'Cliente de Aquarovi',
-    initials: 'CA',
-    service: 'Piscina',
-    text: 'Testimonio pendiente de sustituir por una opinión real de una persona que utilice los servicios de piscina.',
-  },
-  {
-    name: 'Cliente de Aquarovi',
-    initials: 'CA',
+    name: 'Yul de Jesus Mora Mora',
+    initials: 'YM',
     service: 'Gimnasio',
-    text: 'Testimonio pendiente de sustituir por una opinión real sobre la experiencia, el acompañamiento y las instalaciones.',
+    text: 'Esta semana empecé a entrenar en Aquarovi en Moncho y es de lo mejor. Los instructores siempre están atentos a ayudar.',
   },
   {
-    name: 'Cliente de Aquarovi',
-    initials: 'CA',
-    service: 'Gimnasio y piscina',
-    text: 'Testimonio pendiente de sustituir por una opinión real de una persona que combine ambos servicios.',
+    name: 'Moises Brizuela Solano',
+    initials: 'MB',
+    service: 'Piscina',
+    text: 'Hermosas instalaciones y mi hija en sus clases de natación quedó super encantada.',
+  },
+  {
+    name: 'Andrey Perez',
+    initials: 'AP',
+    service: 'Gimnasio',
+    text: '¡Excelente! El personal profesional y las instalaciones de lo mejor.',
+  },
+  {
+    name: 'Francisco Alvarado Ruiz',
+    initials: 'FA',
+    service: 'Aquafitness',
+    text: 'Es un lugar al cual asisto, a hacer acuarobicos, tiene muy buenos entrenadores, y un ambiente muy agradable.',
   },
 ]
 
@@ -36,13 +37,12 @@ const whatsappUrl = `https://wa.me/50687081829?text=${encodeURIComponent(
 
 function RatingStars() {
   return (
-    <div className={styles.stars} aria-label="Calificación de cinco estrellas">
+    <div className={styles.stars} aria-label="5 de 5 estrellas">
       {Array.from({ length: 5 }, (_, index) => (
         <Star
-          aria-hidden="true"
-          className={styles.star}
-          fill="currentColor"
           key={index}
+          aria-hidden="true"
+          fill="currentColor"
           strokeWidth={1.8}
         />
       ))}
@@ -57,9 +57,11 @@ function Testimonials() {
       aria-labelledby="testimonials-title"
     >
       <div className="container">
-        <div className={styles.header}>
-          <div className={styles.introduction}>
-            <span className={styles.eyebrow}>Experiencias que inspiran</span>
+        <div className={styles.heading}>
+          <div>
+            <span className={styles.eyebrow}>
+              Experiencias que inspiran
+            </span>
 
             <h2 className={styles.title} id="testimonials-title">
               La confianza se construye con cada experiencia
@@ -70,18 +72,22 @@ function Testimonials() {
             <RatingStars />
 
             <p className={styles.trustText}>
-              Opiniones de clientes que forman parte de la comunidad Aquarovi.
+              Opiniones reales de personas que forman parte de la comunidad
+              Aquarovi.
             </p>
 
-            <span className={styles.pendingNotice}>
-              Testimonios reales pendientes de incorporar
+            <span className={styles.googleRating}>
+              4.6 en Google
             </span>
           </div>
         </div>
 
         <div className={styles.grid}>
           {testimonials.map((testimonial, index) => (
-            <article className={styles.card} key={`${testimonial.service}-${index}`}>
+            <article
+              className={styles.card}
+              key={`${testimonial.name}-${index}`}
+            >
               <div className={styles.cardHeader}>
                 <RatingStars />
 
@@ -102,9 +108,12 @@ function Testimonials() {
                 </span>
 
                 <div>
-                  <p className={styles.clientName}>{testimonial.name}</p>
+                  <p className={styles.clientName}>
+                    {testimonial.name}
+                  </p>
+
                   <p className={styles.clientService}>
-                    Servicio de {testimonial.service}
+                    Reseña de Google · {testimonial.service}
                   </p>
                 </div>
               </div>
@@ -124,8 +133,8 @@ function Testimonials() {
               </h3>
 
               <p className={styles.callToActionText}>
-                Escríbenos y te ayudaremos a encontrar el servicio que mejor se
-                adapte a tus objetivos.
+                Escríbenos y te ayudaremos a encontrar el servicio que mejor
+                se adapte a tus objetivos.
               </p>
             </div>
           </div>

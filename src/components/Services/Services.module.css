@@ -4,12 +4,35 @@
   background-color: var(--color-white);
 }
 
-.introduction {
+.heading {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.7fr);
-  align-items: end;
-  gap: var(--space-7);
-  margin-bottom: var(--space-7);
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.title {
+  max-width: 20ch;
+  margin-bottom: 0;
+  color: var(--color-text);
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+}
+
+.titleAccent {
+  color: var(--color-primary);
+}
+
+.introductionText {
+  max-width: 62ch;
+  margin-bottom: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+  line-height: 1.75;
+  text-align: center;
 }
 
 .eyebrow {
@@ -20,23 +43,6 @@
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-.title {
-  max-width: 15ch;
-  margin-bottom: 0;
-  color: var(--color-text);
-  font-size: clamp(2.25rem, 5vw, 4rem);
-  letter-spacing: -0.05em;
-  line-height: 1.05;
-}
-
-.introductionText {
-  max-width: 52ch;
-  margin-bottom: 0;
-  color: var(--color-text-muted);
-  font-size: var(--font-size-lg);
-  line-height: 1.75;
 }
 
 .grid {
@@ -208,7 +214,7 @@
 }
 
 @media (max-width: 900px) {
-  .introduction {
+  .heading {
     grid-template-columns: 1fr;
     gap: var(--space-4);
   }
@@ -231,7 +237,7 @@
 }
 
 @media (max-width: 600px) {
-  .introduction {
+  .heading {
     margin-bottom: var(--space-6);
   }
 
