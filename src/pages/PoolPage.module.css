@@ -1000,16 +1000,17 @@
 
 @media (max-width: 600px) {
   .heroVisual {
-    min-height: 520px;
+    min-height: 650px;
   }
 
   .mainVisualCard {
-    inset: 0 0 70px;
+    inset: 0 0 125px;
     padding: var(--space-5);
   }
 
   .floatingCard {
     right: var(--space-3);
+    bottom: var(--space-3);
     left: var(--space-3);
     max-width: none;
   }
