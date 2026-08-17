@@ -9,7 +9,6 @@ import {
   Info,
   MessageCircle,
   PersonStanding,
-  ShieldCheck,
   Sparkles,
   Users,
   Waves,
