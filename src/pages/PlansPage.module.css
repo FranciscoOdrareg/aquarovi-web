@@ -53,6 +53,16 @@
   line-height: 0.98;
 }
 
+.groupClassesNote {
+  max-width: 78ch;
+  margin: var(--space-5) auto 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  line-height: 1.65;
+  text-align: center;
+}
+
 .heroDescription {
   max-width: 64ch;
   margin-bottom: var(--space-6);
@@ -287,6 +297,10 @@
   border-radius: 50%;
 }
 
+/* ==========================================
+   PLANES PRINCIPALES
+   ========================================== */
+
 .mainPlans {
   background-color: var(--color-white);
 }
@@ -327,7 +341,7 @@
 .planCard {
   position: relative;
   display: flex;
-  min-height: 650px;
+  min-height: 680px;
   flex-direction: column;
   padding: clamp(1.5rem, 3vw, 2.25rem);
   border-radius: calc(var(--radius-lg) + 0.25rem);
@@ -427,7 +441,7 @@
 }
 
 .planDescription {
-  min-height: 115px;
+  min-height: 120px;
   margin-bottom: var(--space-5);
   color: var(--color-text-muted);
   line-height: 1.7;
@@ -438,7 +452,7 @@
 }
 
 .priceContainer {
-  min-height: 105px;
+  min-height: 95px;
   margin-bottom: var(--space-5);
   padding-bottom: var(--space-5);
   border-bottom: 1px solid var(--color-border);
@@ -558,18 +572,22 @@
   transform: translateY(-3px);
 }
 
-.poolPlans {
+/* ==========================================
+   TARIFAS DE GIMNASIO
+   ========================================== */
+
+.gymRates {
   background:
     radial-gradient(
-      circle at 88% 20%,
-      rgb(144 224 239 / 25%),
-      transparent 30rem
+      circle at 12% 15%,
+      rgb(144 224 239 / 20%),
+      transparent 28rem
     ),
     var(--color-background);
 }
 
 .poolHeader {
-  max-width: 850px;
+  max-width: 900px;
   margin-bottom: var(--space-7);
 }
 
@@ -578,49 +596,144 @@
   margin-bottom: var(--space-4);
 }
 
-.poolPlansGrid {
+.rateGrid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--space-4);
 }
 
-.poolPlanCard {
+.rateCard {
   display: flex;
-  min-height: 520px;
+  min-height: 275px;
   flex-direction: column;
-  padding: clamp(1.5rem, 3vw, 2.25rem);
-  background-color: rgb(255 255 255 / 92%);
+  padding: var(--space-5);
+  background-color: rgb(255 255 255 / 94%);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base);
 }
 
-.poolPlanCard:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-6px);
-}
-
-.poolPlanTop {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: var(--space-6);
-}
-
-.poolNumber {
-  color: var(--color-border);
-  font-size: var(--font-size-sm);
-  font-weight: 900;
-  letter-spacing: 0.12em;
-}
-
-.poolIcon {
+.rateIcon {
   display: inline-flex;
-  width: 54px;
-  height: 54px;
+  width: 52px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-5);
+  color: var(--color-primary);
+  background-color: rgb(144 224 239 / 28%);
+  border-radius: var(--radius-md);
+}
+
+.rateIcon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.rateCard h3 {
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.ratePrice {
+  margin-bottom: var(--space-4);
+  color: var(--color-primary-dark);
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.ratePrice small {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  letter-spacing: normal;
+}
+
+.rateNote {
+  margin: auto 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.gymScheduleNote {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding: var(--space-5);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.gymScheduleNote > svg {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  padding: 11px;
+  color: var(--color-primary);
+  background-color: rgb(144 224 239 / 28%);
+  border-radius: var(--radius-md);
+}
+
+.gymScheduleNote strong {
+  color: var(--color-text);
+}
+
+.gymScheduleNote p {
+  margin: var(--space-1) 0 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================
+   OPCIONES DE PISCINA
+   ========================================== */
+
+.poolPlans {
+  background-color: var(--color-white);
+}
+
+.poolActivityGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.poolActivityCard {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background:
+    linear-gradient(
+      145deg,
+      rgb(255 255 255 / 98%),
+      rgb(247 250 252 / 96%)
+    );
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius-lg) + 0.25rem);
+  box-shadow: var(--shadow-sm);
+}
+
+.poolActivityHeader {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.poolActivityIcon {
+  display: inline-flex;
+  width: 58px;
+  height: 58px;
   align-items: center;
   justify-content: center;
   color: var(--color-secondary);
@@ -628,63 +741,78 @@
   border-radius: var(--radius-md);
 }
 
-.poolIcon svg {
-  width: 27px;
-  height: 27px;
+.poolActivityIcon svg {
+  width: 29px;
+  height: 29px;
 }
 
-.poolPlanCard h3 {
-  margin-bottom: var(--space-3);
-  font-size: clamp(1.45rem, 3vw, 2rem);
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-}
-
-.poolPlanDescription {
-  min-height: 100px;
-  margin-bottom: var(--space-5);
-  color: var(--color-text-muted);
-  line-height: 1.7;
-}
-
-.poolPriceLine {
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  margin-bottom: var(--space-5);
-  padding-bottom: var(--space-5);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.poolPriceLine span {
+.poolActivityHeader h3 {
+  margin-bottom: var(--space-2);
   color: var(--color-text);
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  font-weight: 900;
-  letter-spacing: -0.05em;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
 }
 
-.poolPriceLine small {
+.poolActivityHeader p {
+  margin: 0;
   color: var(--color-text-muted);
-  font-weight: 700;
+  font-size: var(--font-size-sm);
+  line-height: 1.65;
 }
 
-.poolPlanCard ul {
+.rateTable {
+  display: grid;
+  margin-bottom: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.rateRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: 0.9rem 1rem;
+  background-color: rgb(255 255 255 / 85%);
+}
+
+.rateRow + .rateRow {
+  border-top: 1px solid var(--color-border);
+}
+
+.rateRow span {
+  color: var(--color-text);
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.rateRow strong {
+  color: var(--color-primary-dark);
+  font-size: 1rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.activityDetails {
   display: grid;
   gap: var(--space-3);
   margin-bottom: var(--space-6);
 }
 
-.poolPlanCard li {
+.activityDetails li {
   display: flex;
   align-items: flex-start;
   gap: var(--space-3);
   color: var(--color-text);
   font-size: var(--font-size-sm);
   font-weight: 700;
+  line-height: 1.55;
 }
 
-.poolPlanCard li svg {
+.activityDetails svg {
   width: 22px;
   height: 22px;
   flex: 0 0 22px;
@@ -694,7 +822,7 @@
   border-radius: 50%;
 }
 
-.poolPlanCard > a {
+.poolActivityButton {
   display: inline-flex;
   min-height: 50px;
   align-items: center;
@@ -707,17 +835,104 @@
   font-weight: 900;
   background-color: var(--color-secondary);
   border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
 }
 
-.poolPlanCard > a:hover {
+.poolActivityButton:hover {
   background-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
   transform: translateY(-3px);
 }
 
-.poolPlanCard > a svg {
+.poolActivityButton svg {
   width: 18px;
   height: 18px;
 }
+
+/* ==========================================
+   PASES DIARIOS
+   ========================================== */
+
+.dailyPasses {
+  background:
+    radial-gradient(
+      circle at 88% 20%,
+      rgb(144 224 239 / 22%),
+      transparent 27rem
+    ),
+    var(--color-background);
+}
+
+.dailyPassGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.dailyPassCard {
+  display: flex;
+  min-height: 210px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-4);
+  text-align: center;
+  background-color: rgb(255 255 255 / 94%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.dailyPassCard > span {
+  display: inline-flex;
+  width: 52px;
+  height: 52px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+  color: var(--color-primary);
+  background-color: rgb(144 224 239 / 28%);
+  border-radius: 50%;
+}
+
+.dailyPassCard > span svg {
+  width: 25px;
+  height: 25px;
+}
+
+.dailyPassCard h3 {
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.dailyPassCard strong {
+  color: var(--color-primary-dark);
+  font-size: 1.7rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.dailyPassCard small {
+  margin-top: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.dailyPassNote {
+  max-width: 75ch;
+  margin: var(--space-5) auto 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* ==========================================
+   CONDICIONES
+   ========================================== */
 
 .conditions {
   background-color: var(--color-white);
@@ -829,6 +1044,10 @@
   line-height: 1.65;
 }
 
+/* ==========================================
+   CTA FINAL
+   ========================================== */
+
 .finalCta {
   background-color: var(--color-white);
 }
@@ -871,6 +1090,10 @@
   box-shadow: var(--shadow-md);
 }
 
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
 @media (max-width: 1100px) {
   .heroContainer {
     grid-template-columns: 1fr;
@@ -885,15 +1108,13 @@
     gap: var(--space-4);
   }
 
-  .mainPlansGrid,
-  .poolPlansGrid {
+  .mainPlansGrid {
     grid-template-columns: 1fr;
     max-width: 760px;
     margin-inline: auto;
   }
 
-  .planCard,
-  .poolPlanCard {
+  .planCard {
     min-height: auto;
   }
 
@@ -906,9 +1127,20 @@
   }
 
   .planDescription,
-  .poolPlanDescription,
   .priceContainer {
     min-height: auto;
+  }
+
+  .rateGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .poolActivityGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dailyPassGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .conditionsContainer {
@@ -940,6 +1172,14 @@
     gap: var(--space-3);
   }
 
+  .rateGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .dailyPassGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .conditionsGrid {
     grid-template-columns: 1fr;
   }
@@ -956,16 +1196,17 @@
 
 @media (max-width: 600px) {
   .heroVisual {
-    min-height: 520px;
+    min-height: 650px;
   }
 
   .mainVisualCard {
-    inset: 0 0 70px;
+    inset: 0 0 125px;
     padding: var(--space-5);
   }
 
   .floatingCard {
     right: var(--space-3);
+    bottom: var(--space-3);
     left: var(--space-3);
     max-width: none;
   }
@@ -975,8 +1216,29 @@
   }
 
   .planCard,
-  .poolPlanCard {
+  .poolActivityCard {
     padding: var(--space-5);
+  }
+
+  .poolActivityHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .rateRow {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .rateRow strong {
+    font-size: 1.1rem;
+  }
+
+  .dailyPassGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .gymScheduleNote {
+    align-items: flex-start;
   }
 
   .conditionsContainer {
@@ -987,9 +1249,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .planCard,
-  .poolPlanCard,
   .planButton,
-  .poolPlanCard > a,
+  .poolActivityButton,
   .primaryButton,
   .secondaryButton,
   .finalCtaButton {
@@ -998,9 +1259,8 @@
 
   .planCard:hover,
   .featuredPlan:hover,
-  .poolPlanCard:hover,
   .planButton:hover,
-  .poolPlanCard > a:hover,
+  .poolActivityButton:hover,
   .primaryButton:hover,
   .secondaryButton:hover,
   .finalCtaButton:hover {

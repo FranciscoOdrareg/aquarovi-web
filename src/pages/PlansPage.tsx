@@ -4,9 +4,11 @@ import {
   CircleDollarSign,
   Clock3,
   Dumbbell,
+  GraduationCap,
   HeartHandshake,
   Info,
   MessageCircle,
+  PersonStanding,
   ShieldCheck,
   Sparkles,
   Users,
@@ -14,15 +16,15 @@ import {
 } from 'lucide-react'
 import styles from './PlansPage.module.css'
 
-type PlanVariant = 'standard' | 'featured' | 'pool'
+type PlanVariant = 'standard' | 'featured'
 
-type Plan = {
+type MainPlan = {
   name: string
   category: string
   description: string
   price: string
-  previousPrice?: string
   frequency: string
+  previousPrice?: string
   badge?: string
   features: string[]
   message: string
@@ -30,19 +32,59 @@ type Plan = {
   icon: typeof Dumbbell
 }
 
-const plans: Plan[] = [
+type RateOption = {
+  label: string
+  price: string
+  note?: string
+}
+
+type PoolActivity = {
+  name: string
+  description: string
+  icon: typeof Waves
+  rates: RateOption[]
+  details: string[]
+  message: string
+}
+
+const gymRates: RateOption[] = [
+  {
+    label: 'Tarifa normal',
+    price: '₡26.000',
+  },
+  {
+    label: 'Estudiantes de colegio',
+    price: '₡17.500',
+    note:
+      'Para aplicar la tarifa debe presentarse uniforme o cuaderno de comunicaciones del colegio.',
+  },
+  {
+    label: 'Estudiantes universitarios',
+    price: '₡22.500',
+    note:
+      'Para aplicar la tarifa debe presentarse carnet de estudiante universitario.',
+  },
+  {
+    label: 'Adultos mayores de 65 años',
+    price: '₡18.900',
+  },
+]
+
+const mainPlans: MainPlan[] = [
   {
     name: 'Gimnasio',
     category: 'Entrenamiento',
     description:
-      'Acceso al gimnasio con herramientas para construir una rutina organizada y avanzar según tus objetivos.',
+      'Entrena con acceso completo al gimnasio, mediciones corporales, rutina según tus objetivos y orientación del instructor de turno.',
     price: '₡26.000',
     frequency: 'por mes',
     features: [
       'Acceso completo al gimnasio',
-      'Rutina de entrenamiento',
-      'Valoración corporal',
-      'Acompañamiento semi-personalizado',
+      'Mediciones corporales',
+      'Rutina creada según tus objetivos',
+      'Orientación del instructor de turno',
+      'Funcionales los lunes a las 6:00 p. m.',
+      'Zumba miércoles 7:00 p. m. y sábados 8:45 a. m.',
     ],
     message:
       'Hola, me gustaría recibir información sobre la mensualidad de gimnasio de Aquarovi.',
@@ -53,16 +95,15 @@ const plans: Plan[] = [
     name: 'Premium Fitness',
     category: 'Gimnasio + piscina',
     description:
-      'Combina el gimnasio con una sesión semanal de piscina para disfrutar una rutina más completa.',
+      'Combina gimnasio completo con una clase de natación con instructor una vez por semana.',
     price: '₡39.900',
-    previousPrice: '₡52.000',
     frequency: 'por mes',
-    badge: 'Más elegido',
+    badge: 'Combinado',
     features: [
       'Acceso completo al gimnasio',
-      'Piscina una vez por semana',
-      'Rutina y valoración corporal',
-      'Dos experiencias en un mismo lugar',
+      'Natación con instructor 1 vez por semana',
+      'Funcionales los lunes a las 6:00 p. m.',
+      'Zumba miércoles 7:00 p. m. y sábados 8:45 a. m.',
     ],
     message:
       'Hola, me gustaría recibir información sobre el plan Premium Fitness de gimnasio y piscina.',
@@ -70,72 +111,194 @@ const plans: Plan[] = [
     icon: Sparkles,
   },
   {
-    name: 'Pro Fitness',
+    name: 'PRO Fitness',
     category: 'Gimnasio + piscina',
     description:
-      'Una opción para combinar entrenamiento de gimnasio con dos sesiones semanales de piscina.',
+      'Mayor frecuencia en piscina para complementar tu entrenamiento semanal de gimnasio.',
     price: '₡49.900',
-    previousPrice: '₡60.000',
     frequency: 'por mes',
     badge: 'Mayor frecuencia',
     features: [
       'Acceso completo al gimnasio',
-      'Piscina dos veces por semana',
-      'Rutina y valoración corporal',
-      'Mayor variedad semanal',
+      'Natación con instructor 2 veces por semana',
+      'Funcionales los lunes a las 6:00 p. m.',
+      'Zumba miércoles 7:00 p. m. y sábados 8:45 a. m.',
     ],
     message:
-      'Hola, me gustaría recibir información sobre el plan Pro Fitness de gimnasio y piscina.',
+      'Hola, me gustaría recibir información sobre el plan PRO Fitness de gimnasio y piscina.',
     variant: 'featured',
     icon: Sparkles,
   },
 ]
 
-const poolPlans = [
+const poolActivities: PoolActivity[] = [
   {
-    name: 'Piscina una vez por semana',
-    price: '₡26.000',
-    frequency: 'por mes',
+    name: 'Clases con instructor',
     description:
-      'Una opción para aprender, practicar o disfrutar una actividad acuática semanal.',
-    features: [
-      'Una sesión semanal',
-      'Piscina climatizada',
-      'Acompañamiento de instructor',
-      'Opciones según edad y nivel',
+      'Sesiones semipersonalizadas con rutina según las necesidades de cada persona y orientación del instructor desde fuera de la piscina.',
+    icon: PersonStanding,
+    rates: [
+      {
+        label: 'Niños de 3 a 6 años · 1 vez por semana',
+        price: '₡28.000',
+      },
+      {
+        label: 'Niños de 3 a 6 años · 2 veces por semana',
+        price: '₡36.000',
+      },
+      {
+        label: 'Niños de 3 a 6 años · 3 veces por semana',
+        price: '₡44.000',
+      },
+      {
+        label: '7 años en adelante y adultos · 1 vez por semana',
+        price: '₡26.000',
+      },
+      {
+        label: '7 años en adelante y adultos · 2 veces por semana',
+        price: '₡34.000',
+      },
+      {
+        label: '7 años en adelante y adultos · 3 veces por semana',
+        price: '₡41.000',
+      },
+      {
+        label: 'Adultos mayores · 1 vez por semana',
+        price: '₡19.000',
+      },
+      {
+        label: 'Adultos mayores · 2 veces por semana',
+        price: '₡27.000',
+      },
+      {
+        label: 'Adultos mayores · 3 veces por semana',
+        price: '₡35.000',
+      },
+    ],
+    details: [
+      'Sesiones de aproximadamente 55 minutos',
+      'Rutina adaptada a las necesidades de la persona',
+      'Instructor brinda indicaciones durante la sesión',
     ],
     message:
-      'Hola, me gustaría recibir información sobre piscina una vez por semana.',
+      'Hola, me gustaría recibir información sobre las clases de piscina con instructor de Aquarovi.',
   },
   {
-    name: 'Piscina dos veces por semana',
-    price: '₡34.000',
-    frequency: 'por mes',
+    name: 'Nado libre',
     description:
-      'Mayor frecuencia para avanzar con constancia y aprovechar más actividades dentro del agua.',
-    features: [
-      'Dos sesiones semanales',
-      'Piscina climatizada',
-      'Mayor continuidad en el proceso',
-      'Sujeto a horarios disponibles',
+      'Opción para practicar o entrenar de forma independiente. Esta modalidad no incluye instructor.',
+    icon: Waves,
+    rates: [
+      {
+        label: 'Niños de 3 a 6 años · 1 vez por semana',
+        price: '₡26.000',
+      },
+      {
+        label: 'Niños de 3 a 6 años · 2 veces por semana',
+        price: '₡34.000',
+      },
+      {
+        label: 'Niños de 3 a 6 años · 3 veces por semana',
+        price: '₡41.000',
+      },
+      {
+        label: '7 años en adelante, adultos y adultos mayores · 1 vez por semana',
+        price: '₡23.000',
+      },
+      {
+        label: '7 años en adelante, adultos y adultos mayores · 2 veces por semana',
+        price: '₡30.000',
+      },
+      {
+        label: '7 años en adelante, adultos y adultos mayores · 3 veces por semana',
+        price: '₡38.000',
+      },
+    ],
+    details: [
+      'No incluye instructor',
+      'Sesiones de aproximadamente 55 minutos',
+      'Sujeto a horarios y espacios disponibles',
     ],
     message:
-      'Hola, me gustaría recibir información sobre piscina dos veces por semana.',
+      'Hola, me gustaría recibir información sobre nado libre en Aquarovi.',
   },
   {
-    name: 'Adulto mayor individual',
-    price: '₡19.000',
-    frequency: 'por mes',
+    name: 'Aquafitness',
     description:
-      'Opción individual una vez por semana para personas adultas mayores.',
-    features: [
-      'Una sesión semanal',
-      'Actividad de menor impacto',
-      'Acompañamiento durante la sesión',
-      'Sujeto a valoración y disponibilidad',
+      'Clase grupal de alta intensidad dentro de la piscina, dirigida a adultos y adultos mayores.',
+    icon: HeartHandshake,
+    rates: [
+      {
+        label: '1 vez por semana',
+        price: '₡23.000',
+      },
+      {
+        label: '2 veces por semana',
+        price: '₡30.000',
+      },
+      {
+        label: '3 veces por semana',
+        price: '₡35.000',
+      },
+    ],
+    details: [
+      'Lunes, miércoles o viernes a las 8:00 a. m.',
+      'Clase grupal con rutina creada por el instructor',
+      'Duración aproximada de 55 minutos',
     ],
     message:
-      'Hola, me gustaría recibir información sobre la opción individual de piscina para adulto mayor.',
+      'Hola, me gustaría recibir información sobre Aquafitness en Aquarovi.',
+  },
+  {
+    name: 'Aquaterapia',
+    description:
+      'Clase grupal de baja intensidad dentro de la piscina para adultos y adultos mayores.',
+    icon: HeartHandshake,
+    rates: [
+      {
+        label: '1 vez por semana',
+        price: '₡20.000',
+      },
+      {
+        label: '2 veces por semana',
+        price: '₡27.000',
+      },
+    ],
+    details: [
+      'Martes o miércoles a las 11:00 a. m.',
+      'Clase grupal con rutina creada por el instructor',
+      'Duración aproximada de 55 minutos',
+    ],
+    message:
+      'Hola, me gustaría recibir información sobre Aquaterapia en Aquarovi.',
+  },
+]
+
+const dailyPasses = [
+  {
+    name: 'Gimnasio',
+    price: '₡4.000',
+    icon: Dumbbell,
+  },
+  {
+    name: 'Clase con instructor',
+    price: '₡8.500',
+    icon: PersonStanding,
+  },
+  {
+    name: 'Nado libre',
+    price: '₡7.500',
+    icon: Waves,
+  },
+  {
+    name: 'Aquafitness',
+    price: '₡6.000',
+    icon: HeartHandshake,
+  },
+  {
+    name: 'Aquaterapia',
+    price: '₡6.000',
+    icon: HeartHandshake,
   },
 ]
 
@@ -143,26 +306,26 @@ const conditions = [
   {
     title: 'Horarios sujetos a disponibilidad',
     description:
-      'Los espacios dependen de la actividad, la edad, el nivel y la cantidad de personas inscritas.',
+      'Los espacios dependen de la actividad, edad, nivel y cantidad de personas inscritas.',
     icon: Clock3,
   },
   {
-    title: 'Confirmación de tarifas',
+    title: 'Clases grupales con reserva',
     description:
-      'Consulta antes de inscribirte para confirmar precios, promociones y condiciones vigentes.',
+      'Funcionales y zumba requieren reservar espacio porque se trabaja con cupos limitados.',
+    icon: Users,
+  },
+  {
+    title: 'Tarifas especiales',
+    description:
+      'Las tarifas para estudiantes requieren presentar el documento o identificación correspondiente.',
+    icon: GraduationCap,
+  },
+  {
+    title: 'Confirmación antes de inscribirte',
+    description:
+      'Consulta disponibilidad, tarifas y condiciones vigentes antes de realizar la inscripción.',
     icon: CircleDollarSign,
-  },
-  {
-    title: 'Acompañamiento para elegir',
-    description:
-      'Podemos ayudarte a identificar el plan que mejor se adapte a tu experiencia y objetivos.',
-    icon: HeartHandshake,
-  },
-  {
-    title: 'Ambiente familiar',
-    description:
-      'Los servicios están pensados para diferentes edades y niveles de experiencia.',
-    icon: ShieldCheck,
   },
 ]
 
@@ -189,9 +352,9 @@ function PlansPage() {
             </h1>
 
             <p className={styles.heroDescription}>
-              Elige entre gimnasio, piscina o planes combinados. Te ayudamos a
-              encontrar una alternativa que se adapte a tus objetivos,
-              experiencia y disponibilidad.
+              Consulta tarifas de gimnasio, piscina, planes combinados y pases
+              diarios. Te ayudamos a encontrar una alternativa según tu edad,
+              objetivos y disponibilidad.
             </p>
 
             <div className={styles.heroActions}>
@@ -214,7 +377,7 @@ function PlansPage() {
             <ul className={styles.heroFeatures}>
               <li>
                 <Check aria-hidden="true" />
-                Opciones de gimnasio y piscina
+                Tarifas mensuales
               </li>
 
               <li>
@@ -224,7 +387,7 @@ function PlansPage() {
 
               <li>
                 <Check aria-hidden="true" />
-                Atención por WhatsApp
+                Pases diarios
               </li>
             </ul>
           </div>
@@ -245,6 +408,7 @@ function PlansPage() {
 
               <div>
                 <span className={styles.visualLabel}>Elige y combina</span>
+
                 <h2 className={styles.visualTitle}>Planes</h2>
 
                 <p className={styles.visualText}>
@@ -257,9 +421,10 @@ function PlansPage() {
               <Sparkles aria-hidden="true" strokeWidth={1.8} />
 
               <div>
-                <strong>Opciones combinadas</strong>
+                <strong>Opciones para diferentes necesidades</strong>
+
                 <span>
-                  Integra gimnasio y piscina en una misma mensualidad.
+                  Mensualidades, tarifas especiales y pases por día.
                 </span>
               </div>
             </div>
@@ -282,18 +447,18 @@ function PlansPage() {
               </span>
 
               <h2 className={styles.sectionTitle} id="main-plans-title">
-                Elige gimnasio o combina dos experiencias
+                Gimnasio y planes combinados
               </h2>
             </div>
 
             <p className={styles.sectionDescription}>
-              Los planes combinados permiten complementar el entrenamiento de
-              gimnasio con actividades en piscina dentro de una misma opción.
+              Elige gimnasio o combina entrenamiento y piscina dentro de una
+              misma mensualidad.
             </p>
           </div>
 
           <div className={styles.mainPlansGrid}>
-            {plans.map((plan) => {
+            {mainPlans.map((plan) => {
               const Icon = plan.icon
 
               return (
@@ -362,6 +527,72 @@ function PlansPage() {
               )
             })}
           </div>
+          <p className={styles.groupClassesNote}>
+            * Las clases de funcionales y zumba requieren reserva previa, ya que se
+            trabaja con cupos limitados.
+          </p>
+        </div>
+      </section>
+
+      <section
+        className={`section ${styles.gymRates}`}
+        aria-labelledby="gym-rates-title"
+      >
+        <div className="container">
+          <div className={styles.poolHeader}>
+            <span className={styles.sectionEyebrow}>
+              Tarifas de gimnasio
+            </span>
+
+            <h2 className={styles.sectionTitle} id="gym-rates-title">
+              Opciones según tu perfil
+            </h2>
+
+            <p className={styles.poolDescription}>
+              Además de la tarifa normal, Aquarovi cuenta con mensualidades
+              especiales para estudiantes y adultos mayores.
+            </p>
+          </div>
+
+          <div className={styles.rateGrid}>
+            {gymRates.map((rate) => (
+              <article className={styles.rateCard} key={rate.label}>
+                <span className={styles.rateIcon} aria-hidden="true">
+                  {rate.label.includes('colegio') ||
+                  rate.label.includes('universitarios') ? (
+                    <GraduationCap strokeWidth={1.8} />
+                  ) : rate.label.includes('mayores') ? (
+                    <Users strokeWidth={1.8} />
+                  ) : (
+                    <Dumbbell strokeWidth={1.8} />
+                  )}
+                </span>
+
+                <h3>{rate.label}</h3>
+
+                <div className={styles.ratePrice}>
+                  {rate.price}
+                  <small> / mes</small>
+                </div>
+
+                {rate.note && (
+                  <p className={styles.rateNote}>{rate.note}</p>
+                )}
+              </article>
+            ))}
+          </div>
+
+          <div className={styles.gymScheduleNote}>
+            <Clock3 aria-hidden="true" strokeWidth={1.8} />
+
+            <div>
+              <strong>Horario del gimnasio</strong>
+              <p>
+                Lunes a viernes de 5:00 a. m. a 9:00 p. m. y sábados de
+                8:00 a. m. a 3:00 p. m.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -371,65 +602,123 @@ function PlansPage() {
       >
         <div className="container">
           <div className={styles.poolHeader}>
-            <span className={styles.sectionEyebrow}>Opciones de piscina</span>
+            <span className={styles.sectionEyebrow}>
+              Opciones de piscina
+            </span>
 
             <h2 className={styles.sectionTitle} id="pool-plans-title">
-              Elige la frecuencia que mejor se adapte a ti
+              Elige la actividad y frecuencia que mejor se adapte a ti
             </h2>
 
             <p className={styles.poolDescription}>
-              Las modalidades y espacios disponibles pueden variar según la
-              edad, el nivel y el tipo de actividad acuática.
+              Consulta las mensualidades según modalidad, edad y cantidad de
+              sesiones por semana.
             </p>
           </div>
 
-          <div className={styles.poolPlansGrid}>
-            {poolPlans.map((plan, index) => (
-              <article className={styles.poolPlanCard} key={plan.name}>
-                <div className={styles.poolPlanTop}>
-                  <span className={styles.poolNumber}>
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
+          <div className={styles.poolActivityGrid}>
+            {poolActivities.map((activity) => {
+              const Icon = activity.icon
 
-                  <span className={styles.poolIcon} aria-hidden="true">
-                    {index === 2 ? (
-                      <Users strokeWidth={1.8} />
-                    ) : (
-                      <Waves strokeWidth={1.8} />
-                    )}
-                  </span>
-                </div>
-
-                <h3>{plan.name}</h3>
-                <p className={styles.poolPlanDescription}>
-                  {plan.description}
-                </p>
-
-                <div className={styles.poolPriceLine}>
-                  <span>{plan.price}</span>
-                  <small>{plan.frequency}</small>
-                </div>
-
-                <ul>
-                  {plan.features.map((feature) => (
-                    <li key={feature}>
-                      <Check aria-hidden="true" strokeWidth={2.5} />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={createWhatsappUrl(plan.message)}
-                  target="_blank"
-                  rel="noreferrer"
+              return (
+                <article
+                  className={styles.poolActivityCard}
+                  key={activity.name}
                 >
-                  Consultar disponibilidad
-                  <ArrowRight aria-hidden="true" strokeWidth={2} />
-                </a>
-              </article>
-            ))}
+                  <div className={styles.poolActivityHeader}>
+                    <span
+                      className={styles.poolActivityIcon}
+                      aria-hidden="true"
+                    >
+                      <Icon strokeWidth={1.8} />
+                    </span>
+
+                    <div>
+                      <h3>{activity.name}</h3>
+                      <p>{activity.description}</p>
+                    </div>
+                  </div>
+
+                  <div className={styles.rateTable}>
+                    {activity.rates.map((rate) => (
+                      <div
+                        className={styles.rateRow}
+                        key={`${activity.name}-${rate.label}`}
+                      >
+                        <span>{rate.label}</span>
+                        <strong>{rate.price}</strong>
+                      </div>
+                    ))}
+                  </div>
+
+                  <ul className={styles.activityDetails}>
+                    {activity.details.map((detail) => (
+                      <li key={detail}>
+                        <Check aria-hidden="true" strokeWidth={2.5} />
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    className={styles.poolActivityButton}
+                    href={createWhatsappUrl(activity.message)}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Consultar disponibilidad
+                    <ArrowRight aria-hidden="true" strokeWidth={2} />
+                  </a>
+                </article>
+              )
+            })}
           </div>
+        </div>
+      </section>
+
+      <section
+        className={`section ${styles.dailyPasses}`}
+        aria-labelledby="daily-passes-title"
+      >
+        <div className="container">
+          <div className={styles.poolHeader}>
+            <span className={styles.sectionEyebrow}>
+              Pases por día
+            </span>
+
+            <h2 className={styles.sectionTitle} id="daily-passes-title">
+              También puedes venir por una sola sesión
+            </h2>
+
+            <p className={styles.poolDescription}>
+              Una alternativa práctica para visitar Aquarovi sin adquirir una
+              mensualidad.
+            </p>
+          </div>
+
+          <div className={styles.dailyPassGrid}>
+            {dailyPasses.map((pass) => {
+              const Icon = pass.icon
+
+              return (
+                <article className={styles.dailyPassCard} key={pass.name}>
+                  <span aria-hidden="true">
+                    <Icon strokeWidth={1.8} />
+                  </span>
+
+                  <h3>{pass.name}</h3>
+                  <strong>{pass.price}</strong>
+                  <small>por día</small>
+                </article>
+              )
+            })}
+          </div>
+
+          <p className={styles.dailyPassNote}>
+            Los precios de clase con instructor y nado libre aplican para
+            niños, adultos y adultos mayores según disponibilidad de la
+            modalidad correspondiente.
+          </p>
         </div>
       </section>
 
@@ -452,8 +741,8 @@ function PlansPage() {
             </h2>
 
             <p>
-              Queremos brindarte información clara y actualizada para que elijas
-              con confianza.
+              Queremos brindarte información clara para que puedas elegir la
+              modalidad que mejor se adapte a ti.
             </p>
           </div>
 
@@ -482,14 +771,15 @@ function PlansPage() {
         <div className={`container ${styles.finalCtaContainer}`}>
           <div>
             <span className={styles.finalCtaEyebrow}>
-              Todavía no sabes cuál elegir
+              ¿Todavía no sabes cuál elegir?
             </span>
 
             <h2>Te ayudamos a encontrar tu mejor opción</h2>
 
             <p>
-              Cuéntanos qué servicio te interesa, cuántas veces deseas asistir y
-              cuáles son tus objetivos. Te orientaremos según la disponibilidad.
+              Cuéntanos qué servicio te interesa, cuántas veces deseas asistir
+              y cuáles son tus objetivos. Te orientaremos según la
+              disponibilidad.
             </p>
           </div>
 

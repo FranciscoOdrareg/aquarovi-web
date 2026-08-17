@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aquarovi-web.vercel.app/sitemap.xml
