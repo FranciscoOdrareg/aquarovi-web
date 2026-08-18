@@ -662,15 +662,47 @@
 }
 
 .functionalCard h3 {
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
   font-size: clamp(1.8rem, 3vw, 2.5rem);
   letter-spacing: -0.035em;
 }
 
-.functionalCard p {
+.groupClassSchedule {
+  display: grid;
+  gap: var(--space-3);
   margin-bottom: var(--space-5);
+}
+
+.groupClassItem {
+  display: grid;
+  grid-template-columns: minmax(105px, 0.55fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background-color: rgb(239 250 252 / 88%);
+  border: 1px solid rgb(0 119 182 / 10%);
+  border-radius: var(--radius-md);
+}
+
+.groupClassItem strong {
+  color: var(--color-primary-dark);
+  font-size: var(--font-size-sm);
+}
+
+.groupClassItem span {
   color: var(--color-text-muted);
-  line-height: 1.7;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.groupClassNotice {
+  margin-bottom: var(--space-5);
+  padding-top: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.65;
+  border-top: 1px solid var(--color-border);
 }
 
 .functionalCard a {
@@ -854,6 +886,11 @@
   .functionalFeatures {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .groupClassItem {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
   }
 
   .functionalCard a {

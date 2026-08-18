@@ -45,7 +45,7 @@
 
 .heroTitle {
   max-width: 13ch;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
   color: var(--color-text);
   font-size: clamp(3rem, 6vw, 5.4rem);
   font-weight: 900;
@@ -55,7 +55,7 @@
 
 .groupClassesNote {
   max-width: 78ch;
-  margin: var(--space-5) auto 0;
+  margin: var(--space-4) auto 0;
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
   font-weight: 700;
@@ -341,9 +341,9 @@
 .planCard {
   position: relative;
   display: flex;
-  min-height: 680px;
+  min-height: 540px;
   flex-direction: column;
-  padding: clamp(1.5rem, 3vw, 2.25rem);
+  padding: clamp(1.25rem, 2vw, 1.75rem);
   border-radius: calc(var(--radius-lg) + 0.25rem);
   transition:
     transform var(--transition-base),
@@ -367,24 +367,23 @@
     );
   border: 1px solid rgb(255 255 255 / 18%);
   box-shadow: 0 22px 50px rgb(0 119 182 / 24%);
-  transform: translateY(-16px);
 }
 
 .planCard:hover {
   box-shadow: var(--shadow-md);
-  transform: translateY(-7px);
+  transform: translateY(-5px);
 }
 
 .featuredPlan:hover {
-  transform: translateY(-23px);
+  transform: translateY(-5px);
 }
 
 .badge {
   position: absolute;
-  top: var(--space-4);
-  right: var(--space-4);
+  top: var(--space-3);
+  right: var(--space-3);
   display: inline-flex;
-  min-height: 30px;
+  min-height: 28px;
   align-items: center;
   padding-inline: var(--space-3);
   color: var(--color-primary-dark);
@@ -398,11 +397,11 @@
 
 .planIcon {
   display: inline-flex;
-  width: 58px;
-  height: 58px;
+  width: 52px;
+  height: 52px;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
   color: var(--color-primary);
   background-color: rgb(144 224 239 / 28%);
   border-radius: var(--radius-md);
@@ -421,7 +420,7 @@
 
 .planCategory {
   display: block;
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
   color: var(--color-primary);
   font-size: 0.75rem;
   font-weight: 900;
@@ -434,17 +433,17 @@
 }
 
 .planName {
-  margin-bottom: var(--space-3);
-  font-size: clamp(1.75rem, 3vw, 2.35rem);
+  margin-bottom: var(--space-2);
+  font-size: clamp(1.7rem, 2.7vw, 2.2rem);
   letter-spacing: -0.035em;
   line-height: 1.1;
 }
 
 .planDescription {
-  min-height: 120px;
-  margin-bottom: var(--space-5);
+  min-height: 76px;
+  margin-bottom: var(--space-3);
   color: var(--color-text-muted);
-  line-height: 1.7;
+  line-height: 1.55;
 }
 
 .featuredPlan .planDescription {
@@ -452,9 +451,9 @@
 }
 
 .priceContainer {
-  min-height: 95px;
-  margin-bottom: var(--space-5);
-  padding-bottom: var(--space-5);
+  min-height: 68px;
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -506,18 +505,18 @@
 
 .featureList {
   display: grid;
-  gap: var(--space-3);
-  margin-bottom: var(--space-6);
+  gap: 0.55rem;
+  margin-bottom: var(--space-4);
 }
 
 .featureList li {
   display: flex;
   align-items: flex-start;
-  gap: var(--space-3);
+  gap: var(--space-2);
   color: var(--color-text);
-  font-size: var(--font-size-sm);
+  font-size: 0.82rem;
   font-weight: 700;
-  line-height: 1.55;
+  line-height: 1.4;
 }
 
 .featuredPlan .featureList li {
@@ -526,9 +525,9 @@
 
 .featureList li span {
   display: inline-flex;
-  width: 23px;
-  height: 23px;
-  flex: 0 0 23px;
+  width: 21px;
+  height: 21px;
+  flex: 0 0 21px;
   align-items: center;
   justify-content: center;
   color: var(--color-white);
@@ -548,7 +547,7 @@
 
 .planButton {
   display: inline-flex;
-  min-height: 52px;
+  min-height: 48px;
   align-items: center;
   justify-content: center;
   margin-top: auto;
@@ -1123,7 +1122,7 @@
   }
 
   .featuredPlan:hover {
-    transform: translateY(-7px);
+    transform: translateY(-5px);
   }
 
   .planDescription,

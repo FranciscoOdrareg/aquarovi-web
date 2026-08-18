@@ -33,19 +33,19 @@ const benefits = [
   {
     title: 'Rutina de entrenamiento',
     description:
-      'Una guía organizada para que sepas qué ejercicios realizar durante tu proceso.',
+      'Nuestros instructores crean una rutina de acuerdo con tus objetivos y nivel de experiencia.',
     icon: ClipboardCheck,
   },
   {
-    title: 'Valoración corporal',
+    title: 'Mediciones corporales',
     description:
       'Seguimiento de datos que permite conocer mejor tu progreso y tus objetivos.',
     icon: BarChart3,
   },
   {
-    title: 'Acompañamiento cercano',
+    title: 'Acompañamiento del instructor',
     description:
-      'Orientación semi-personalizada para entrenar con mayor seguridad y confianza.',
+      'Recibe orientación del instructor de turno para desarrollar tu rutina con mayor seguridad y claridad.',
     icon: Users,
   },
 ]
@@ -83,9 +83,24 @@ const trainingAreas = [
 
 const supportItems = [
   'Orientación para utilizar correctamente los equipos.',
-  'Rutinas adaptadas al nivel y los objetivos de cada persona.',
-  'Valoraciones para dar seguimiento al proceso.',
-  'Ambiente cercano, familiar y respetuoso.',
+  'Rutina creada según tu nivel y objetivos.',
+  'Mediciones corporales para dar seguimiento a tu proceso.',
+  'Acompañamiento del instructor que se encuentre en turno.',
+]
+
+const groupClasses = [
+  {
+    name: 'Funcionales',
+    schedule: 'Lunes · 6:00 p. m.',
+  },
+  {
+    name: 'Zumba',
+    schedule: 'Miércoles · 7:00 p. m.',
+  },
+  {
+    name: 'Zumba',
+    schedule: 'Sábados · 8:45 a. m.',
+  },
 ]
 
 function GymPage() {
@@ -103,7 +118,7 @@ function GymPage() {
             </h1>
 
             <p className={styles.heroDescription}>
-              Encuentra equipo, acompañamiento y diferentes áreas de
+              Encuentra equipo, orientación y diferentes áreas de
               entrenamiento para construir una rutina adecuada a tus objetivos.
             </p>
 
@@ -132,12 +147,12 @@ function GymPage() {
 
               <li>
                 <Check aria-hidden="true" />
-                Rutinas y valoraciones
+                Rutina y mediciones corporales
               </li>
 
               <li>
                 <Check aria-hidden="true" />
-                Acompañamiento semi-personalizado
+                Acompañamiento del instructor de turno
               </li>
             </ul>
           </div>
@@ -152,7 +167,9 @@ function GymPage() {
 
               <div>
                 <span className={styles.visualLabel}>Entrena</span>
+
                 <h2 className={styles.visualTitle}>Gimnasio</h2>
+
                 <p className={styles.visualText}>
                   Un espacio para desarrollar fuerza, condición física y
                   confianza.
@@ -228,7 +245,9 @@ function GymPage() {
       >
         <div className="container">
           <div className={styles.trainingHeader}>
-            <span className={styles.sectionEyebrow}>Áreas de entrenamiento</span>
+            <span className={styles.sectionEyebrow}>
+              Áreas de entrenamiento
+            </span>
 
             <h2 className={styles.sectionTitle} id="training-areas-title">
               Trabaja tu cuerpo de forma completa
@@ -306,6 +325,7 @@ function GymPage() {
                   <span aria-hidden="true">
                     <Check strokeWidth={2.5} />
                   </span>
+
                   {item}
                 </li>
               ))}
@@ -335,12 +355,13 @@ function GymPage() {
             </span>
 
             <h2 className={styles.functionalTitle} id="functional-title">
-              Entrena con energía en nuestras clases funcionales
+              Complementa tu entrenamiento con energía y movimiento
             </h2>
 
             <p className={styles.functionalDescription}>
-              Complementa tu rutina con sesiones dinámicas que combinan fuerza,
-              resistencia, movilidad y trabajo cardiovascular.
+              Además del entrenamiento en gimnasio, puedes participar en
+              sesiones grupales para incorporar variedad y movimiento a tu
+              semana.
             </p>
 
             <div className={styles.functionalFeatures}>
@@ -356,25 +377,37 @@ function GymPage() {
 
               <span>
                 <HeartPulse aria-hidden="true" />
-                Mejora tu condición física
+                Actividad complementaria
               </span>
             </div>
           </div>
 
           <aside className={styles.functionalCard}>
             <span className={styles.functionalCardLabel}>
-              Consulta disponibilidad
+              Horarios de clases
             </span>
 
-            <h3>Clases funcionales</h3>
+            <h3>Funcionales y Zumba</h3>
 
-            <p>
-              Los días, horarios y espacios pueden variar. Escríbenos para
-              conocer las opciones disponibles.
+            <div className={styles.groupClassSchedule}>
+              {groupClasses.map((groupClass, index) => (
+                <div
+                  className={styles.groupClassItem}
+                  key={`${groupClass.name}-${index}`}
+                >
+                  <strong>{groupClass.name}</strong>
+                  <span>{groupClass.schedule}</span>
+                </div>
+              ))}
+            </div>
+
+            <p className={styles.groupClassNotice}>
+              Estas clases requieren reserva previa, ya que se trabaja con
+              cupos limitados.
             </p>
 
             <a href={whatsappUrl} target="_blank" rel="noreferrer">
-              Consultar horarios
+              Consultar disponibilidad
               <ArrowRight aria-hidden="true" strokeWidth={2} />
             </a>
           </aside>

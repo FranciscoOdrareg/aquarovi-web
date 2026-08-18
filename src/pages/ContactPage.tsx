@@ -64,19 +64,39 @@ const scheduleGroups = [
   {
     title: 'Gimnasio',
     description:
-      'El acceso depende del horario general de las instalaciones y de las condiciones de cada plan.',
+      'Lunes a viernes de 5:00 a. m. a 9:00 p. m. y sábados de 8:00 a. m. a 3:00 p. m.',
     icon: Dumbbell,
   },
   {
     title: 'Piscina',
     description:
-      'Las clases, el nado libre y las actividades acuáticas tienen horarios específicos.',
+      'Las sesiones tienen una duración aproximada de 55 minutos. Los horarios dependen de la actividad, edad y disponibilidad de espacio.',
     icon: Waves,
   },
   {
     title: 'Clases y actividades',
-    description:
-      'Las clases funcionales y grupales pueden variar según disponibilidad e instructor.',
+    description: '',
+    schedules: [
+      {
+        name: 'Funcionales',
+        times: ['Lunes · 6:00 p. m.'],
+      },
+      {
+        name: 'Zumba',
+        times: [
+          'Miércoles · 7:00 p. m.',
+          'Sábados · 8:45 a. m.',
+        ],
+      },
+      {
+        name: 'Aquafitness',
+        times: ['Lunes, miércoles o viernes · 8:00 a. m.'],
+      },
+      {
+        name: 'Aquaterapia',
+        times: ['Martes o miércoles · 11:00 a. m.'],
+      },
+    ],
     icon: Clock3,
   },
 ]
@@ -90,7 +110,12 @@ const frequentlyAskedQuestions = [
   {
     question: '¿Los horarios son iguales para todos los servicios?',
     answer:
-      'No. El gimnasio, la piscina, el nado libre y las clases grupales pueden tener horarios distintos.',
+      'No. El gimnasio tiene un horario general, mientras que piscina, nado libre, Aquafitness, Aquaterapia y las clases grupales cuentan con horarios específicos.',
+  },
+  {
+    question: '¿Necesito reservar las clases grupales?',
+    answer:
+      'Sí. Las clases funcionales y de zumba requieren reserva previa porque se trabaja con cupos limitados.',
   },
   {
     question: '¿Cómo puedo saber si hay espacio disponible?',
@@ -185,6 +210,7 @@ function ContactPage() {
 
               <div>
                 <strong>San Isidro, San Ramón</strong>
+
                 <span>
                   200 m noreste de la Escuela Laboratorio.
                 </span>
@@ -339,13 +365,13 @@ function ContactPage() {
             </span>
 
             <h2 className={styles.sectionTitle} id="schedule-title">
-              Cada servicio puede tener un horario diferente
+              Consulta los horarios principales de cada servicio
             </h2>
 
             <p className={styles.scheduleDescription}>
-              Para evitar información desactualizada, confirma el horario y la
-              disponibilidad antes de asistir, especialmente para piscina y
-              actividades grupales.
+              Estos horarios sirven como referencia. Para piscina y actividades
+              con cupo limitado, te recomendamos confirmar disponibilidad antes
+              de asistir.
             </p>
           </div>
 
@@ -367,10 +393,29 @@ function ContactPage() {
 
                   <h3>{schedule.title}</h3>
 
-                  <p>{schedule.description}</p>
+                  {schedule.schedules ? (
+                    <div className={styles.activitySchedule}>
+                      {schedule.schedules.map((activity) => (
+                        <div
+                          className={styles.activityScheduleItem}
+                          key={activity.name}
+                        >
+                          <strong>{activity.name}</strong>
+
+                          <div>
+                            {activity.times.map((time) => (
+                              <span key={time}>{time}</span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p>{schedule.description}</p>
+                  )}
 
                   <span className={styles.availabilityLabel}>
-                    Confirmar horario por WhatsApp
+                    Confirmar disponibilidad por WhatsApp
                   </span>
                 </article>
               )
@@ -387,7 +432,8 @@ function ContactPage() {
 
               <p>
                 Indícanos el servicio, la edad de la persona y los días en los
-                que podría asistir. Te ayudaremos a revisar las opciones.
+                que podría asistir. Te ayudaremos a revisar las opciones
+                disponibles.
               </p>
             </div>
 
