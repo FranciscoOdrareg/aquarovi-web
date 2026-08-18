@@ -36,6 +36,9 @@ const socialLinks = [
   },
 ]
 
+const googleMapsUrl =
+  'https://www.google.com/maps/place/Centro+Deportivo+Aquarovi/@10.0900583,-84.4622781,17z/data=!3m1!4b1!4m6!3m5!1s0x8fa044e62e95b9fd:0x7b1bdeaf1e67be2d!8m2!3d10.0900583!4d-84.4622781!16s%2Fg%2F11c1xm8vrt?entry=ttu'
+
 function Footer() {
   const currentYear = new Date().getFullYear()
 
@@ -102,6 +105,7 @@ function Footer() {
               <a
                 className={styles.contactItem}
                 href="mailto:aquarovi3@gmail.com"
+                aria-label="Enviar correo electrónico a Centro Deportivo Aquarovi"
               >
                 <span className={styles.contactIcon} aria-hidden="true">
                   <Mail strokeWidth={1.8} />
@@ -113,7 +117,13 @@ function Footer() {
                 </span>
               </a>
 
-              <div className={styles.contactItem}>
+              <a
+                className={styles.contactItem}
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Abrir la ubicación de Centro Deportivo Aquarovi en Google Maps"
+              >
                 <span className={styles.contactIcon} aria-hidden="true">
                   <MapPin strokeWidth={1.8} />
                 </span>
@@ -125,13 +135,14 @@ function Footer() {
                     San Isidro, San Ramón
                   </small>
                 </span>
-              </div>
+              </a>
 
               <a
                 className={styles.contactItem}
                 href="https://wa.me/50687081829"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Escribir a Centro Deportivo Aquarovi por WhatsApp"
               >
                 <span className={styles.contactIcon} aria-hidden="true">
                   <MessageCircle strokeWidth={1.8} />
@@ -146,6 +157,7 @@ function Footer() {
               <a
                 className={styles.contactItem}
                 href="tel:+50624456244"
+                aria-label="Llamar a Centro Deportivo Aquarovi"
               >
                 <span className={styles.contactIcon} aria-hidden="true">
                   <Phone strokeWidth={1.8} />

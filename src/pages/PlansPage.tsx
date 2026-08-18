@@ -69,6 +69,27 @@ const gymRates: RateOption[] = [
   },
 ]
 
+
+const gymGroupClasses = [
+  {
+    name: 'Funcionales',
+    schedule: ['Lunes · 6:00 p. m.'],
+    description:
+      'Sesión grupal para complementar tu entrenamiento con fuerza, resistencia y movilidad.',
+    icon: Dumbbell,
+  },
+  {
+    name: 'Zumba',
+    schedule: [
+      'Miércoles · 7:00 p. m.',
+      'Sábados · 8:45 a. m.',
+    ],
+    description:
+      'Clase grupal de baile y movimiento para agregar cardio y energía a tu semana.',
+    icon: Users,
+  },
+]
+
 const mainPlans: MainPlan[] = [
   {
     name: 'Gimnasio',
@@ -82,8 +103,7 @@ const mainPlans: MainPlan[] = [
       'Mediciones corporales',
       'Rutina creada según tus objetivos',
       'Orientación del instructor de turno',
-      'Funcionales los lunes a las 6:00 p. m.',
-      'Zumba miércoles 7:00 p. m. y sábados 8:45 a. m.',
+      'Funcionales y Zumba incluidos*',
     ],
     message:
       'Hola, me gustaría recibir información sobre la mensualidad de gimnasio de Aquarovi.',
@@ -101,8 +121,7 @@ const mainPlans: MainPlan[] = [
     features: [
       'Acceso completo al gimnasio',
       'Natación con instructor 1 vez por semana',
-      'Funcionales los lunes a las 6:00 p. m.',
-      'Zumba miércoles 7:00 p. m. y sábados 8:45 a. m.',
+      'Funcionales y Zumba incluidos*',
     ],
     message:
       'Hola, me gustaría recibir información sobre el plan Premium Fitness de gimnasio y piscina.',
@@ -120,8 +139,7 @@ const mainPlans: MainPlan[] = [
     features: [
       'Acceso completo al gimnasio',
       'Natación con instructor 2 veces por semana',
-      'Funcionales los lunes a las 6:00 p. m.',
-      'Zumba miércoles 7:00 p. m. y sábados 8:45 a. m.',
+      'Funcionales y Zumba incluidos*',
     ],
     message:
       'Hola, me gustaría recibir información sobre el plan PRO Fitness de gimnasio y piscina.',
@@ -347,7 +365,8 @@ function PlansPage() {
             </span>
 
             <h1 className={styles.heroTitle} id="plans-page-title">
-              Encuentra una opción para comenzar a sentirte mejor
+              Encuentra una opción para comenzar a{' '}
+              <span>sentirte mejor</span>
             </h1>
 
             <p className={styles.heroDescription}>
@@ -527,8 +546,8 @@ function PlansPage() {
             })}
           </div>
           <p className={styles.groupClassesNote}>
-            * Las clases de funcionales y zumba requieren reserva previa, ya que se
-            trabaja con cupos limitados.
+            * Funcionales y Zumba están incluidos en estos planes. Los horarios y
+            detalles de reserva se muestran más adelante.
           </p>
         </div>
       </section>
@@ -592,6 +611,61 @@ function PlansPage() {
               </p>
             </div>
           </div>
+
+          <div className={styles.groupClassesBlock}>
+            <div className={styles.groupClassesHeader}>
+              <div>
+                <span className={styles.sectionEyebrow}>
+                  Clases incluidas
+                </span>
+
+                <h3>Complementa tu mensualidad con clases grupales</h3>
+              </div>
+
+              <p>
+                Funcionales y Zumba forman parte de los planes de gimnasio y
+                combinados. Reserva tu espacio con anticipación porque se
+                trabaja con cupos limitados.
+              </p>
+            </div>
+
+            <div className={styles.groupClassesGrid}>
+              {gymGroupClasses.map((groupClass) => {
+                const Icon = groupClass.icon
+
+                return (
+                  <article
+                    className={styles.groupClassCard}
+                    key={groupClass.name}
+                  >
+                    <span className={styles.groupClassIcon} aria-hidden="true">
+                      <Icon strokeWidth={1.8} />
+                    </span>
+
+                    <div className={styles.groupClassContent}>
+                      <h4>{groupClass.name}</h4>
+
+                      <p>{groupClass.description}</p>
+
+                      <div className={styles.groupClassSchedule}>
+                        {groupClass.schedule.map((schedule) => (
+                          <span key={schedule}>
+                            <Clock3 aria-hidden="true" strokeWidth={2} />
+                            {schedule}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </article>
+                )
+              })}
+            </div>
+
+            <p className={styles.groupClassesReservation}>
+              <Info aria-hidden="true" strokeWidth={1.8} />
+              Estas clases requieren reserva previa y están sujetas a cupo.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -600,19 +674,58 @@ function PlansPage() {
         aria-labelledby="pool-plans-title"
       >
         <div className="container">
-          <div className={styles.poolHeader}>
-            <span className={styles.sectionEyebrow}>
-              Opciones de piscina
-            </span>
+          <div className={styles.poolPlansHeader}>
+            <div className={styles.poolHeaderCopy}>
+              <span className={styles.sectionEyebrow}>
+                Opciones de piscina
+              </span>
 
-            <h2 className={styles.sectionTitle} id="pool-plans-title">
-              Elige la actividad y frecuencia que mejor se adapte a ti
-            </h2>
+              <h2 className={styles.poolPlansTitle} id="pool-plans-title">
+                Elige la <span>actividad</span> y frecuencia que mejor se adapte
+                a ti
+              </h2>
 
-            <p className={styles.poolDescription}>
-              Consulta las mensualidades según modalidad, edad y cantidad de
-              sesiones por semana.
-            </p>
+              <p className={styles.poolDescription}>
+                Consulta las mensualidades según modalidad, edad y cantidad de
+                sesiones por semana.
+              </p>
+            </div>
+
+            <aside
+              className={styles.poolHighlights}
+              aria-label="Características de la piscina"
+            >
+              <div className={styles.poolHighlightsTop}>
+                <span className={styles.poolHighlightsIcon} aria-hidden="true">
+                  <Waves strokeWidth={1.7} />
+                </span>
+
+                <div>
+                  <span className={styles.poolHighlightsEyebrow}>
+                    Una experiencia cómoda
+                  </span>
+                  <strong>Piscina climatizada, techada y cerrada</strong>
+                </div>
+              </div>
+
+              <div className={styles.poolHighlightsGrid}>
+                <div>
+                  <Clock3 aria-hidden="true" strokeWidth={1.8} />
+                  <span>
+                    <strong>55 min</strong>
+                    Duración aproximada
+                  </span>
+                </div>
+
+                <div>
+                  <Users aria-hidden="true" strokeWidth={1.8} />
+                  <span>
+                    <strong>Opciones por edad</strong>
+                    Niños, adultos y adultos mayores
+                  </span>
+                </div>
+              </div>
+            </aside>
           </div>
 
           <div className={styles.poolActivityGrid}>

@@ -1,15 +1,11 @@
 import {
   ArrowRight,
   Check,
-  Clock3,
-  Dumbbell,
   Mail,
   MapPin,
   MessageCircle,
-  Navigation,
   Phone,
   ShieldCheck,
-  Waves,
 } from 'lucide-react'
 import styles from './ContactPage.module.css'
 
@@ -25,7 +21,10 @@ const whatsappUrl = `https://wa.me/50687081829?text=${encodeURIComponent(
 )}`
 
 const googleMapsUrl =
-  'https://www.google.com/maps/search/?api=1&query=Centro+Deportivo+Aquarovi+San+Ramon+Alajuela'
+  'https://www.google.com/maps/place/Centro+Deportivo+Aquarovi/@10.0900583,-84.4622781,17z/data=!3m1!4b1!4m6!3m5!1s0x8fa044e62e95b9fd:0x7b1bdeaf1e67be2d!8m2!3d10.0900583!4d-84.4622781!16s%2Fg%2F11c1xm8vrt?entry=ttu'
+
+const googleMapsEmbedUrl =
+  'https://www.google.com/maps?q=10.0900583,-84.4622781&z=17&output=embed'
 
 const contactMethods = [
   {
@@ -57,47 +56,6 @@ const contactMethods = [
     linkLabel: 'Enviar un correo',
     icon: Mail,
     external: false,
-  },
-]
-
-const scheduleGroups = [
-  {
-    title: 'Gimnasio',
-    description:
-      'Lunes a viernes de 5:00 a. m. a 9:00 p. m. y sábados de 8:00 a. m. a 3:00 p. m.',
-    icon: Dumbbell,
-  },
-  {
-    title: 'Piscina',
-    description:
-      'Las sesiones tienen una duración aproximada de 55 minutos. Los horarios dependen de la actividad, edad y disponibilidad de espacio.',
-    icon: Waves,
-  },
-  {
-    title: 'Clases y actividades',
-    description: '',
-    schedules: [
-      {
-        name: 'Funcionales',
-        times: ['Lunes · 6:00 p. m.'],
-      },
-      {
-        name: 'Zumba',
-        times: [
-          'Miércoles · 7:00 p. m.',
-          'Sábados · 8:45 a. m.',
-        ],
-      },
-      {
-        name: 'Aquafitness',
-        times: ['Lunes, miércoles o viernes · 8:00 a. m.'],
-      },
-      {
-        name: 'Aquaterapia',
-        times: ['Martes o miércoles · 11:00 a. m.'],
-      },
-    ],
-    icon: Clock3,
   },
 ]
 
@@ -135,9 +93,7 @@ function ContactPage() {
       <section className={styles.hero} aria-labelledby="contact-page-title">
         <div className={`container ${styles.heroContainer}`}>
           <div className={styles.heroContent}>
-            <span className={styles.eyebrow}>
-              Estamos para ayudarte
-            </span>
+            <span className={styles.eyebrow}>Estamos para ayudarte</span>
 
             <h1 className={styles.heroTitle} id="contact-page-title">
               Hablemos sobre la opción ideal para ti
@@ -192,9 +148,7 @@ function ContactPage() {
               </div>
 
               <div>
-                <span className={styles.visualLabel}>
-                  Escríbenos
-                </span>
+                <span className={styles.visualLabel}>Escríbenos</span>
 
                 <h2 className={styles.visualTitle}>Contacto</h2>
 
@@ -211,9 +165,7 @@ function ContactPage() {
               <div>
                 <strong>San Isidro, San Ramón</strong>
 
-                <span>
-                  200 m noreste de la Escuela Laboratorio.
-                </span>
+                <span>200 m noreste de la Escuela Laboratorio.</span>
               </div>
             </div>
 
@@ -229,9 +181,7 @@ function ContactPage() {
         <div className="container">
           <div className={styles.sectionIntroduction}>
             <div>
-              <span className={styles.sectionEyebrow}>
-                Canales de atención
-              </span>
+              <span className={styles.sectionEyebrow}>Canales de atención</span>
 
               <h2 className={styles.sectionTitle} id="contact-methods-title">
                 Elige la forma más cómoda de contactarnos
@@ -303,42 +253,32 @@ function ContactPage() {
             <div className={styles.locationVisualContent}>
               <span>Centro Deportivo Aquarovi</span>
 
-              <strong>San Isidro, San Ramón</strong>
+              <strong>
+                San Isidro,
+                <br />
+                San Ramón
+              </strong>
 
-              <p>
-                200 metros noreste de la Escuela Laboratorio.
-              </p>
+              <p>200 metros noreste de la Escuela Laboratorio.</p>
             </div>
           </div>
 
           <div className={styles.locationContent}>
-            <span className={styles.sectionEyebrow}>
-              Cómo llegar
-            </span>
+            <span className={styles.sectionEyebrow}>Cómo llegar</span>
 
             <h2 className={styles.sectionTitle} id="location-title">
               Visítanos en San Ramón de Alajuela
             </h2>
 
-            <p className={styles.locationDescription}>
-              Estamos ubicados en San Isidro de San Ramón. La referencia
-              principal es la Escuela Laboratorio: desde ahí debes avanzar
-              aproximadamente 200 metros en dirección noreste.
-            </p>
-
-            <div className={styles.addressCard}>
-              <span aria-hidden="true">
-                <Navigation strokeWidth={1.8} />
-              </span>
-
-              <div>
-                <strong>Referencia de llegada</strong>
-
-                <p>
-                  200 m noreste de la Escuela Laboratorio, San Isidro,
-                  San Ramón de Alajuela.
-                </p>
-              </div>
+            <div className={styles.mapContainer}>
+              <iframe
+                className={styles.googleMap}
+                src={googleMapsEmbedUrl}
+                title="Ubicación de Centro Deportivo Aquarovi en Google Maps"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
 
             <a
@@ -348,97 +288,7 @@ function ContactPage() {
               rel="noreferrer"
             >
               <MapPin aria-hidden="true" strokeWidth={2} />
-              Buscar Aquarovi en Google Maps
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section
-        className={`section ${styles.schedule}`}
-        aria-labelledby="schedule-title"
-      >
-        <div className="container">
-          <div className={styles.scheduleHeader}>
-            <span className={styles.sectionEyebrow}>
-              Horarios de atención
-            </span>
-
-            <h2 className={styles.sectionTitle} id="schedule-title">
-              Consulta los horarios principales de cada servicio
-            </h2>
-
-            <p className={styles.scheduleDescription}>
-              Estos horarios sirven como referencia. Para piscina y actividades
-              con cupo limitado, te recomendamos confirmar disponibilidad antes
-              de asistir.
-            </p>
-          </div>
-
-          <div className={styles.scheduleGrid}>
-            {scheduleGroups.map((schedule, index) => {
-              const Icon = schedule.icon
-
-              return (
-                <article className={styles.scheduleCard} key={schedule.title}>
-                  <div className={styles.scheduleCardTop}>
-                    <span className={styles.scheduleNumber}>
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-
-                    <span className={styles.scheduleIcon} aria-hidden="true">
-                      <Icon strokeWidth={1.8} />
-                    </span>
-                  </div>
-
-                  <h3>{schedule.title}</h3>
-
-                  {schedule.schedules ? (
-                    <div className={styles.activitySchedule}>
-                      {schedule.schedules.map((activity) => (
-                        <div
-                          className={styles.activityScheduleItem}
-                          key={activity.name}
-                        >
-                          <strong>{activity.name}</strong>
-
-                          <div>
-                            {activity.times.map((time) => (
-                              <span key={time}>{time}</span>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <p>{schedule.description}</p>
-                  )}
-
-                  <span className={styles.availabilityLabel}>
-                    Confirmar disponibilidad por WhatsApp
-                  </span>
-                </article>
-              )
-            })}
-          </div>
-
-          <div className={styles.scheduleNotice}>
-            <span aria-hidden="true">
-              <Clock3 strokeWidth={1.8} />
-            </span>
-
-            <div>
-              <strong>¿Necesitas conocer un horario específico?</strong>
-
-              <p>
-                Indícanos el servicio, la edad de la persona y los días en los
-                que podría asistir. Te ayudaremos a revisar las opciones
-                disponibles.
-              </p>
-            </div>
-
-            <a href={whatsappUrl} target="_blank" rel="noreferrer">
-              Consultar horarios
+              Abrir Aquarovi en Google Maps
               <ArrowRight aria-hidden="true" strokeWidth={2} />
             </a>
           </div>
