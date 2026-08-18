@@ -4,29 +4,35 @@ import {
   MessageCircle,
   Phone,
 } from 'lucide-react'
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTiktok,
+} from 'react-icons/fa'
 import { Link } from 'react-router'
 import styles from './Footer.module.css'
 
-const navigationLinks = [
+const socialLinks = [
   {
-    label: 'Inicio',
-    path: '/',
+    label: 'Instagram',
+    handle: '@aquarovi',
+    href: 'https://www.instagram.com/aquarovi/?hl=es',
+    icon: FaInstagram,
+    className: 'instagram',
   },
   {
-    label: 'Gimnasio',
-    path: '/gimnasio',
+    label: 'Facebook',
+    handle: '/Aquarovi',
+    href: 'https://www.facebook.com/Aquarovi',
+    icon: FaFacebookF,
+    className: 'facebook',
   },
   {
-    label: 'Piscina',
-    path: '/piscina',
-  },
-  {
-    label: 'Planes',
-    path: '/planes',
-  },
-  {
-    label: 'Contacto',
-    path: '/contacto',
+    label: 'TikTok',
+    handle: '@aquarovi',
+    href: 'https://www.tiktok.com/@aquarovi',
+    icon: FaTiktok,
+    className: 'tiktok',
   },
 ]
 
@@ -37,23 +43,43 @@ function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.container}`}>
         <div className={styles.mainContent}>
-          <nav
-            className={styles.navigationColumn}
-            aria-label="Navegación del pie de página"
-          >
-            <h2 className={styles.columnTitle}>Navegación</h2>
+          <div className={styles.socialColumn}>
+            <h2 className={styles.columnTitle}>Síguenos en</h2>
 
-            <ul className={styles.linkList}>
-              {navigationLinks.map((link) => (
-                <li key={link.path}>
-                  <Link className={styles.footerLink} to={link.path}>
-                    <span className={styles.linkDot} aria-hidden="true" />
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+            <div
+              className={styles.socialList}
+              aria-label="Redes sociales de Centro Deportivo Aquarovi"
+            >
+              {socialLinks.map((social) => {
+                const Icon = social.icon
+
+                return (
+                  <a
+                    className={styles.socialLink}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Visitar ${social.label} de Centro Deportivo Aquarovi`}
+                    key={social.label}
+                  >
+                    <span
+                      className={`${styles.socialIcon} ${
+                        styles[social.className]
+                      }`}
+                      aria-hidden="true"
+                    >
+                      <Icon />
+                    </span>
+
+                    <span className={styles.socialContent}>
+                      <strong>{social.label}</strong>
+                      <small>{social.handle}</small>
+                    </span>
+                  </a>
+                )
+              })}
+            </div>
+          </div>
 
           <div className={styles.brandColumn}>
             <Link
