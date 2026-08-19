@@ -2,13 +2,6 @@ import { Link } from 'react-router'
 import MiniGallery from '../MiniGallery/MiniGallery'
 import styles from './Hero.module.css'
 
-const whatsappMessage =
-  'Hola, me gustaría recibir información sobre los servicios y planes de Centro Deportivo Aquarovi.'
-
-const whatsappUrl = `https://wa.me/50687081829?text=${encodeURIComponent(
-  whatsappMessage,
-)}`
-
 const gymImages = [
   {
     src: '/images/gallery/gym/gym1.jpg',
@@ -71,15 +64,6 @@ function Hero() {
             <Link className={styles.primaryButton} to="/planes">
               Ver planes y precios
             </Link>
-
-            <a
-              className={styles.secondaryButton}
-              href={whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Consultar por WhatsApp
-            </a>
           </div>
 
           <ul

@@ -4,6 +4,7 @@ import {
   MessageCircle,
   Phone,
 } from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa'
 import { Link } from 'react-router'
 import styles from './FinalCallToAction.module.css'
 
@@ -40,7 +41,7 @@ function FinalCallToAction() {
               target="_blank"
               rel="noreferrer"
             >
-              <MessageCircle aria-hidden="true" strokeWidth={2} />
+              <FaWhatsapp aria-hidden="true" />
               Hablar por WhatsApp
             </a>
 
@@ -85,7 +86,7 @@ function FinalCallToAction() {
               rel="noreferrer"
             >
               <span className={styles.contactItemIcon} aria-hidden="true">
-                <MessageCircle strokeWidth={1.8} />
+                <FaWhatsapp />
               </span>
 
               <span>

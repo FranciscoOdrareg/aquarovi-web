@@ -7,6 +7,7 @@ import {
   Phone,
   ShieldCheck,
 } from 'lucide-react'
+import SEO from '../components/SEO/SEO'
 import styles from './ContactPage.module.css'
 
 const phoneNumber = '2445-6244'
@@ -89,7 +90,14 @@ const frequentlyAskedQuestions = [
 
 function ContactPage() {
   return (
-    <main>
+    <>
+      <SEO
+        title="Contacto y ubicación | Centro Deportivo Aquarovi"
+        description="Contacta a Centro Deportivo Aquarovi en San Ramón de Alajuela. Consulta por WhatsApp, teléfono o correo y encuentra nuestra ubicación en Google Maps."
+        canonical="https://aquarovi-web.vercel.app/contacto"
+      />
+
+      <main>
       <section className={styles.hero} aria-labelledby="contact-page-title">
         <div className={`container ${styles.heroContainer}`}>
           <div className={styles.heroContent}>
@@ -361,6 +369,7 @@ function ContactPage() {
         </div>
       </section>
     </main>
+  </>
   )
 }
 

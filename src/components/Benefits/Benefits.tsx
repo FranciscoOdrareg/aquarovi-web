@@ -6,6 +6,7 @@ import {
   Sparkles,
   Waves,
 } from 'lucide-react'
+import { Link } from 'react-router'
 import styles from './Benefits.module.css'
 
 const benefits = [
@@ -47,13 +48,6 @@ const benefits = [
   },
 ]
 
-const whatsappMessage =
-  'Hola, me gustaría conocer cuál servicio o plan de Aquarovi se adapta mejor a mis objetivos.'
-
-const whatsappUrl = `https://wa.me/50687081829?text=${encodeURIComponent(
-  whatsappMessage,
-)}`
-
 function Benefits() {
   return (
     <section
@@ -73,14 +67,9 @@ function Benefits() {
             puedas avanzar a tu ritmo en un ambiente cercano y familiar.
           </p>
 
-          <a
-            className={styles.contactButton}
-            href={whatsappUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <Link className={styles.contactButton} to="/planes">
             Encontrar mi mejor opción
-          </a>
+          </Link>
         </div>
 
         <div className={styles.grid}>

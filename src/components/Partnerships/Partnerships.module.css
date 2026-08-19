@@ -1,0 +1,329 @@
+.section {
+  overflow: hidden;
+  background:
+    linear-gradient(
+      180deg,
+      rgb(247 250 252 / 55%) 0%,
+      rgb(255 255 255 / 100%) 100%
+    );
+}
+
+.container {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-6);
+}
+
+.headingContent {
+  max-width: 720px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+.description {
+  max-width: 650px;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.whatsappButton {
+  display: inline-flex;
+  min-height: 50px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding-inline: var(--space-5);
+  color: var(--color-white);
+  font-weight: 800;
+  background-color: var(--color-success);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 10px 26px rgb(22 163 74 / 20%);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.whatsappButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+.whatsappButton:hover {
+  box-shadow: 0 14px 30px rgb(22 163 74 / 26%);
+  transform: translateY(-2px);
+}
+
+.logoViewport {
+  width: 100%;
+  overflow: visible;
+}
+
+.logoTrack {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.logoCard {
+  display: flex;
+  min-width: 0;
+  min-height: 120px;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  cursor: pointer;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+
+.logoCard:hover {
+  z-index: 2;
+  border-color: rgb(0 119 182 / 22%);
+  box-shadow: 0 14px 32px rgb(15 23 42 / 12%);
+  transform: translateY(-4px);
+}
+
+.logoCard:focus-visible {
+  outline: 3px solid rgb(0 119 182 / 30%);
+  outline-offset: 3px;
+}
+
+.logo {
+  display: block;
+  width: 100%;
+  max-width: 150px;
+  height: 70px;
+  object-fit: contain;
+  transition: transform 220ms ease;
+}
+
+.logoCard:hover .logo {
+  transform: scale(1.14);
+}
+
+/* ========================================
+   VISOR / MODAL
+======================================== */
+
+.viewerOverlay {
+  position: fixed;
+  z-index: 999999;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background-color: rgb(2 31 53 / 78%);
+  backdrop-filter: blur(8px);
+  animation: viewerFadeIn 180ms ease;
+}
+
+.viewer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: min(90vw, 720px);
+  min-height: 360px;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 4rem);
+  background-color: var(--color-white);
+  border: 1px solid rgb(255 255 255 / 80%);
+  border-radius: calc(var(--radius-lg) + 0.5rem);
+  box-shadow: 0 30px 90px rgb(0 0 0 / 40%);
+  animation: viewerScaleIn 200ms ease;
+}
+
+.viewerImage {
+  display: block;
+  width: auto;
+  max-width: min(100%, 520px);
+  height: auto;
+  max-height: 65vh;
+  object-fit: contain;
+}
+
+.closeButton {
+  position: absolute;
+  z-index: 2;
+  top: 1rem;
+  right: 1rem;
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.closeButton:hover {
+  background-color: rgb(144 224 239 / 25%);
+  border-color: rgb(0 119 182 / 16%);
+  transform: rotate(4deg);
+}
+
+.closeButton:focus-visible {
+  outline: 3px solid rgb(0 119 182 / 30%);
+  outline-offset: 3px;
+}
+
+.closeButton svg {
+  width: 21px;
+  height: 21px;
+}
+
+@keyframes viewerFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes viewerScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1050px) {
+  .heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .logoTrack {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ========================================
+   MÓVIL
+======================================== */
+
+@media (max-width: 650px) {
+  .heading {
+    gap: var(--space-4);
+  }
+
+  .title {
+    font-size: clamp(2rem, 10vw, 2.75rem);
+  }
+
+  .whatsappButton {
+    width: 100%;
+  }
+
+  .logoTrack {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+
+  .logoCard {
+    min-height: 100px;
+    padding: var(--space-3);
+  }
+
+  .logo {
+    max-width: 125px;
+    height: 60px;
+  }
+
+  .viewerOverlay {
+    padding: 1rem;
+  }
+
+  .viewer {
+    width: 94vw;
+    min-height: 280px;
+    padding: 3.5rem 1.5rem 2rem;
+  }
+
+  .viewerImage {
+    max-width: 100%;
+    max-height: 55vh;
+  }
+
+  .closeButton {
+    top: 0.8rem;
+    right: 0.8rem;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ========================================
+   MOVIMIENTO REDUCIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsappButton,
+  .logoCard,
+  .logo,
+  .closeButton {
+    transition: none;
+  }
+
+  .whatsappButton:hover,
+  .logoCard:hover,
+  .logoCard:hover .logo,
+  .closeButton:hover {
+    transform: none;
+  }
+
+  .viewerOverlay,
+  .viewer {
+    animation: none;
+  }
+}

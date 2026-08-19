@@ -1,4 +1,5 @@
 import { MessageCircle, Quote, Star } from 'lucide-react'
+import { FaWhatsapp } from 'react-icons/fa'
 import styles from './Testimonials.module.css'
 
 const testimonials = [
@@ -145,7 +146,8 @@ function Testimonials() {
             target="_blank"
             rel="noreferrer"
           >
-            Quiero comenzar
+            <FaWhatsapp aria-hidden="true" />
+            Hablar por WhatsApp
           </a>
         </div>
       </div>

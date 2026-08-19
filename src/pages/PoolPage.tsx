@@ -11,6 +11,7 @@ import {
   Waves,
 } from 'lucide-react'
 import { Link } from 'react-router'
+import SEO from '../components/SEO/SEO'
 import styles from './PoolPage.module.css'
 
 const whatsappMessage =
@@ -119,7 +120,14 @@ const preparationItems = [
 
 function PoolPage() {
   return (
-    <main>
+    <>
+      <SEO
+        title="Piscina climatizada en San Ramón | Centro Deportivo Aquarovi"
+        description="Piscina climatizada en San Ramón de Alajuela con clases para niños y adultos, nado libre, Aquafitness y Aquaterapia. Conoce las opciones de Aquarovi."
+        canonical="https://aquarovi-web.vercel.app/piscina"
+      />
+
+      <main>
       <section className={styles.hero} aria-labelledby="pool-title">
         <div className={`container ${styles.heroContainer}`}>
           <div className={styles.heroContent}>
@@ -512,6 +520,7 @@ function PoolPage() {
         </div>
       </section>
     </main>
+  </>
   )
 }
 

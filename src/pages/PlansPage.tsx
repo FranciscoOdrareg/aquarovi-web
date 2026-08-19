@@ -15,6 +15,7 @@ import {
   Waves,
 } from 'lucide-react'
 import { useLocation } from 'react-router'
+import SEO from '../components/SEO/SEO'
 import styles from './PlansPage.module.css'
 
 type PlanVariant = 'standard' | 'featured'
@@ -463,8 +464,15 @@ function PlansPage() {
   )
 
   return (
-    <main>
-      <section className={styles.hero} aria-labelledby="plans-page-title">
+    <>
+      <SEO
+        title="Planes y precios | Gimnasio y piscina Aquarovi"
+        description="Consulta los planes y precios de Aquarovi en San Ramón: gimnasio, piscina, planes combinados, tarifas especiales y pases diarios."
+        canonical="https://aquarovi-web.vercel.app/planes"
+      />
+
+      <main>
+        <section className={styles.hero} aria-labelledby="plans-page-title">
         <div className={`container ${styles.heroContainer}`}>
           <div className={styles.heroContent}>
             <span className={styles.eyebrow}>
@@ -1146,6 +1154,7 @@ function PlansPage() {
         </div>
       </section>
     </main>
+  </>
   )
 }
 
