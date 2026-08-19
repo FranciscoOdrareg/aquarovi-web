@@ -19,20 +19,20 @@
   min-height: calc(100vh - 78px);
   grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
   align-items: center;
-  gap: clamp(3rem, 7vw, 7rem);
+  gap: clamp(2.5rem, 6vw, 6rem);
   padding-block: clamp(2rem, 4vw, 3rem);
 }
 
 .content {
-  max-width: 680px;
-  transform: translateY(-6.5rem);
+  max-width: 720px;
+  transform: translateY(-3.5rem);
 }
 
 .eyebrow {
   display: inline-flex;
+  min-height: 34px;
   align-items: center;
-  min-height: 36px;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
   padding-inline: var(--space-4);
   color: var(--color-primary-dark);
   font-size: var(--font-size-sm);
@@ -45,13 +45,13 @@
 }
 
 .title {
-  max-width: 12ch;
-  margin-bottom: var(--space-5);
+  max-width: 14ch;
+  margin-bottom: var(--space-4);
   color: var(--color-text);
-  font-size: clamp(3rem, 6vw, 5.6rem);
+  font-size: clamp(2.8rem, 5vw, 4.65rem);
   font-weight: 850;
-  letter-spacing: -0.065em;
-  line-height: 0.98;
+  letter-spacing: -0.058em;
+  line-height: 1;
 }
 
 .titleAccent {
@@ -65,7 +65,7 @@
   right: 0;
   bottom: -0.08em;
   left: 0;
-  height: 0.11em;
+  height: 0.1em;
   content: "";
   background-color: var(--color-secondary);
   border-radius: var(--radius-pill);
@@ -73,18 +73,18 @@
 }
 
 .description {
-  max-width: 620px;
-  margin-bottom: var(--space-6);
+  max-width: 600px;
+  margin-bottom: var(--space-5);
   color: var(--color-text-muted);
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  line-height: 1.75;
+  font-size: clamp(1rem, 1.8vw, 1.18rem);
+  line-height: 1.7;
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-5);
 }
 
 .primaryButton,
@@ -156,13 +156,13 @@
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-5);
-  transform: translateY(-2.5rem);
+  gap: var(--space-4);
+  transform: translateY(-1.5rem);
 }
 
 .galleryWrapper {
-  min-width: 0;
   width: 100%;
+  min-width: 0;
 }
 
 .serviceCard {
@@ -284,7 +284,7 @@
   }
 
   .title {
-    max-width: 14ch;
+    max-width: 15ch;
   }
 
   .content,
@@ -322,7 +322,8 @@
 
   .title {
     max-width: 100%;
-    font-size: clamp(2.75rem, 14vw, 4rem);
+    font-size: clamp(2.55rem, 12vw, 3.7rem);
+    line-height: 1.02;
   }
 
   .description {
@@ -356,5 +357,17 @@
     top: 40%;
     right: -45%;
     width: 480px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .secondaryButton {
+    transition: none;
+  }
+
+  .primaryButton:hover,
+  .secondaryButton:hover {
+    transform: none;
   }
 }

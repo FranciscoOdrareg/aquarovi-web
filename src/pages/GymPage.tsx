@@ -43,9 +43,9 @@ const benefits = [
     icon: BarChart3,
   },
   {
-    title: 'Acompañamiento del instructor',
+    title: 'Clases grupales incluidas',
     description:
-      'Recibe orientación del instructor de turno para desarrollar tu rutina con mayor seguridad y claridad.',
+      'Complementa tu mensualidad con Funcionales y Zumba, sujetas a reserva y disponibilidad.',
     icon: Users,
   },
 ]
@@ -53,7 +53,7 @@ const benefits = [
 const trainingAreas = [
   {
     number: '01',
-    title: 'Tren inferior',
+    title: 'Piernas y glúteos',
     description:
       'Máquinas y espacios para trabajar cuádriceps, isquiotibiales, glúteos y pantorrillas.',
     icon: Activity,
@@ -91,15 +91,14 @@ const supportItems = [
 const groupClasses = [
   {
     name: 'Funcionales',
-    schedule: 'Lunes · 6:00 p. m.',
+    schedules: ['Lunes · 6:00 p. m.'],
   },
   {
     name: 'Zumba',
-    schedule: 'Miércoles · 7:00 p. m.',
-  },
-  {
-    name: 'Zumba',
-    schedule: 'Sábados · 8:45 a. m.',
+    schedules: [
+      'Miércoles · 7:00 p. m.',
+      'Sábados · 8:45 a. m.',
+    ],
   },
 ]
 
@@ -114,17 +113,26 @@ function GymPage() {
             </span>
 
             <h1 className={styles.heroTitle} id="gym-title">
-              Entrena con propósito y avanza a tu ritmo
+              Entrena con propósito y{' '}
+              <span className={styles.heroTitleAccent}>avanza a tu ritmo</span>
             </h1>
 
             <p className={styles.heroDescription}>
-              Encuentra equipo, orientación y diferentes áreas de
-              entrenamiento para construir una rutina adecuada a tus objetivos.
+              Equipamiento, rutina según tus objetivos, mediciones corporales y
+              orientación del instructor de turno en San Ramón.
             </p>
 
             <div className={styles.heroActions}>
-              <a
+              <Link
                 className={styles.primaryButton}
+                to="/planes#planes-destacados"
+              >
+                Ver planes y precios
+                <ArrowRight aria-hidden="true" strokeWidth={2} />
+              </Link>
+
+              <a
+                className={styles.secondaryButton}
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
@@ -132,11 +140,6 @@ function GymPage() {
                 <MessageCircle aria-hidden="true" strokeWidth={2} />
                 Consultar por WhatsApp
               </a>
-
-              <Link className={styles.secondaryButton} to="/planes">
-                Conocer los planes
-                <ArrowRight aria-hidden="true" strokeWidth={2} />
-              </Link>
             </div>
 
             <ul className={styles.heroFeatures}>
@@ -337,7 +340,7 @@ function GymPage() {
               target="_blank"
               rel="noreferrer"
             >
-              Solicitar información
+              Consultar sobre el gimnasio
               <ArrowRight aria-hidden="true" strokeWidth={2} />
             </a>
           </div>
@@ -390,13 +393,18 @@ function GymPage() {
             <h3>Funcionales y Zumba</h3>
 
             <div className={styles.groupClassSchedule}>
-              {groupClasses.map((groupClass, index) => (
+              {groupClasses.map((groupClass) => (
                 <div
                   className={styles.groupClassItem}
-                  key={`${groupClass.name}-${index}`}
+                  key={groupClass.name}
                 >
                   <strong>{groupClass.name}</strong>
-                  <span>{groupClass.schedule}</span>
+
+                  <div className={styles.groupClassTimes}>
+                    {groupClass.schedules.map((schedule) => (
+                      <span key={schedule}>{schedule}</span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -426,20 +434,30 @@ function GymPage() {
             <h2>Da el primer paso hacia una rutina más activa</h2>
 
             <p>
-              Escríbenos y te ayudaremos a conocer el gimnasio, los planes y la
-              opción que mejor se adapte a tus objetivos.
+              Revisa las opciones disponibles o escríbenos si quieres resolver
+              alguna duda antes de comenzar.
             </p>
           </div>
 
-          <a
-            className={styles.finalCtaButton}
-            href={whatsappUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <MessageCircle aria-hidden="true" strokeWidth={2} />
-            Hablar por WhatsApp
-          </a>
+          <div className={styles.finalCtaActions}>
+            <Link
+              className={styles.finalCtaPlansButton}
+              to="/planes#planes-destacados"
+            >
+              Ver precios del gimnasio
+              <ArrowRight aria-hidden="true" strokeWidth={2} />
+            </Link>
+
+            <a
+              className={styles.finalCtaButton}
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle aria-hidden="true" strokeWidth={2} />
+              Consultar por WhatsApp
+            </a>
+          </div>
         </div>
       </section>
     </main>

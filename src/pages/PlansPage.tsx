@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import {
   ArrowRight,
   Check,
@@ -13,6 +14,7 @@ import {
   Users,
   Waves,
 } from 'lucide-react'
+import { useLocation } from 'react-router'
 import styles from './PlansPage.module.css'
 
 type PlanVariant = 'standard' | 'featured'
@@ -68,7 +70,6 @@ const gymRates: RateOption[] = [
     price: '₡18.900',
   },
 ]
-
 
 const gymGroupClasses = [
   {
@@ -351,6 +352,31 @@ function createWhatsappUrl(message: string) {
 }
 
 function PlansPage() {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (!location.hash) {
+      return
+    }
+
+    const id = decodeURIComponent(location.hash.slice(1))
+
+    const timeout = window.setTimeout(() => {
+      const element = document.getElementById(id)
+
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }
+    }, 100)
+
+    return () => {
+      window.clearTimeout(timeout)
+    }
+  }, [location.hash])
+
   const generalWhatsappUrl = createWhatsappUrl(
     'Hola, me gustaría recibir ayuda para elegir el plan de Aquarovi que mejor se adapte a mí.',
   )
@@ -545,6 +571,7 @@ function PlansPage() {
               )
             })}
           </div>
+
           <p className={styles.groupClassesNote}>
             * Funcionales y Zumba están incluidos en estos planes. Los horarios y
             detalles de reserva se muestran más adelante.
@@ -735,6 +762,7 @@ function PlansPage() {
               return (
                 <article
                   className={styles.poolActivityCard}
+                  id={activity.name.toLowerCase().replace(/\s+/g, '-')}
                   key={activity.name}
                 >
                   <div className={styles.poolActivityHeader}>

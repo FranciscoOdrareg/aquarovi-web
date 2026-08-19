@@ -3,7 +3,7 @@ import MiniGallery from '../MiniGallery/MiniGallery'
 import styles from './Hero.module.css'
 
 const whatsappMessage =
-  'Hola, me gustaría recibir información sobre los servicios de Centro Deportivo Aquarovi.'
+  'Hola, me gustaría recibir información sobre los servicios y planes de Centro Deportivo Aquarovi.'
 
 const whatsappUrl = `https://wa.me/50687081829?text=${encodeURIComponent(
   whatsappMessage,
@@ -57,28 +57,29 @@ function Hero() {
           </span>
 
           <h1 className={styles.title} id="hero-title">
-            Tu bienestar comienza en{' '}
-            <span className={styles.titleAccent}>Aquarovi</span>
+            Entrena, nada y{' '}
+            <span className={styles.titleAccent}>siéntete mejor</span>{' '}
+            en Aquarovi
           </h1>
 
           <p className={styles.description}>
-            Entrena, nada y alcanza tus objetivos en un centro deportivo
-            pensado para acompañarte en cada etapa de tu proceso.
+            Gimnasio, piscina climatizada y opciones para distintas edades y
+            objetivos, en un solo centro deportivo en San Ramón.
           </p>
 
           <div className={styles.actions}>
+            <Link className={styles.primaryButton} to="/planes">
+              Ver planes y precios
+            </Link>
+
             <a
-              className={styles.primaryButton}
+              className={styles.secondaryButton}
               href={whatsappUrl}
               target="_blank"
               rel="noreferrer"
             >
-              Solicitar información
+              Consultar por WhatsApp
             </a>
-
-            <Link className={styles.secondaryButton} to="/planes">
-              Conocer los planes
-            </Link>
           </div>
 
           <ul
@@ -126,8 +127,6 @@ function Hero() {
               dialogLabel="Galería de imágenes de la piscina"
             />
           </div>
-
-
         </div>
       </div>
 

@@ -1384,6 +1384,14 @@
   box-shadow: var(--shadow-md);
 }
 
+.poolActivityCard {
+  scroll-margin-top: 120px;
+}
+
+#pool-plans-title {
+  scroll-margin-top: 120px;
+}
+
 /* ==========================================
    RESPONSIVE
    ========================================== */
