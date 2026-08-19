@@ -47,15 +47,6 @@ const poolBenefits = [
   },
 ]
 
-const waterSessionBenefits = [
-  'Mejorar tu resistencia física',
-  'Fortalecer diferentes grupos musculares',
-  'Trabajar movilidad y flexibilidad',
-  'Favorecer la coordinación',
-  'Mantenerte activo con menor impacto',
-  'Disfrutar una actividad que favorece el bienestar',
-]
-
 const activities = [
   {
     number: '01',
@@ -66,8 +57,10 @@ const activities = [
     features: [
       'Adaptación al medio acuático',
       'Aprendizaje según edad y nivel',
-      'Acompañamiento de instructor',
+      'Actividad guiada por instructor',
     ],
+    link: '/planes#pool-plans-title',
+    linkLabel: 'Ver planes',
     variant: 'deep',
   },
   {
@@ -81,6 +74,8 @@ const activities = [
       'Trabajo de técnica y resistencia',
       'Proceso progresivo',
     ],
+    link: '/planes#pool-plans-title',
+    linkLabel: 'Ver planes',
     variant: 'light',
   },
   {
@@ -94,6 +89,8 @@ const activities = [
       'Complemento para tu entrenamiento',
       'Sujeto a horarios disponibles',
     ],
+    link: '/planes#pool-plans-title',
+    linkLabel: 'Ver opciones',
     variant: 'light',
   },
   {
@@ -107,6 +104,8 @@ const activities = [
       'Ambiente grupal',
       'Trabajo de cuerpo completo',
     ],
+    link: '/planes#aquafitness',
+    linkLabel: 'Ver precio y horarios',
     variant: 'deep',
   },
 ]
@@ -129,7 +128,10 @@ function PoolPage() {
             </span>
 
             <h1 className={styles.heroTitle} id="pool-title">
-              Muévete, aprende y disfruta dentro del agua
+              Muévete, aprende y{' '}
+              <span className={styles.heroTitleAccent}>
+                disfruta dentro del agua
+              </span>
             </h1>
 
             <p className={styles.heroDescription}>
@@ -138,8 +140,16 @@ function PoolPage() {
             </p>
 
             <div className={styles.heroActions}>
-              <a
+              <Link
                 className={styles.primaryButton}
+                to="/planes#pool-plans-title"
+              >
+                Ver planes de piscina
+                <ArrowRight aria-hidden="true" strokeWidth={2} />
+              </Link>
+
+              <a
+                className={styles.secondaryButton}
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
@@ -147,11 +157,6 @@ function PoolPage() {
                 <MessageCircle aria-hidden="true" strokeWidth={2} />
                 Consultar por WhatsApp
               </a>
-
-              <Link className={styles.secondaryButton} to="/planes">
-                Conocer los planes
-                <ArrowRight aria-hidden="true" strokeWidth={2} />
-              </Link>
             </div>
 
             <ul
@@ -266,31 +271,6 @@ function PoolPage() {
               })}
             </div>
           </div>
-
-          <div className={styles.sessionBenefits}>
-            <div className={styles.sessionBenefitsHeading}>
-              <span className={styles.sessionBenefitsEyebrow}>
-                Movimiento dentro del agua
-              </span>
-
-              <h3>Una sesión en el agua puede ayudarte a:</h3>
-            </div>
-
-            <ul
-              className={styles.sessionBenefitsList}
-              aria-label="Beneficios de una sesión en el agua"
-            >
-              {waterSessionBenefits.map((benefit) => (
-                <li key={benefit}>
-                  <span aria-hidden="true">
-                    <Check strokeWidth={2.5} />
-                  </span>
-
-                  {benefit}
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
       </section>
 
@@ -305,12 +285,12 @@ function PoolPage() {
             </span>
 
             <h2 className={styles.sectionTitle} id="pool-activities-title">
-              Encuentra una opción para cada etapa
+              Encuentra la actividad acuática ideal para ti
             </h2>
 
             <p className={styles.activitiesDescription}>
-              Puedes elegir entre aprendizaje, práctica independiente,
-              acondicionamiento físico y actividades grupales.
+              Elige entre clases de natación para niños y adultos, nado libre
+              y Aquafitness según tu objetivo, edad y experiencia.
             </p>
           </div>
 
@@ -352,6 +332,14 @@ function PoolPage() {
                         </li>
                       ))}
                     </ul>
+
+                    <Link
+                      className={styles.activityLink}
+                      to={activity.link}
+                    >
+                      {activity.linkLabel}
+                      <ArrowRight aria-hidden="true" strokeWidth={2} />
+                    </Link>
                   </div>
                 </article>
               )
@@ -362,7 +350,7 @@ function PoolPage() {
 
       <section
         className={`section ${styles.olderAdults}`}
-        aria-labelledby="older-adults-title"
+        aria-labelledby="aquatherapy-title"
       >
         <div className={`container ${styles.olderAdultsContainer}`}>
           <div className={styles.olderAdultsVisual}>
@@ -374,16 +362,16 @@ function PoolPage() {
             </span>
 
             <span className={styles.olderAdultsLabel}>
-              Movimiento y bienestar
+              Movimiento de baja intensidad
             </span>
 
             <h2 className={styles.olderAdultsVisualTitle}>
-              Opciones para personas adultas mayores
+              Aquaterapia
             </h2>
 
             <p>
-              El agua permite realizar movimientos con menor impacto y puede
-              convertirse en una alternativa agradable para mantenerse activo.
+              Una alternativa para mantenerse activo mediante ejercicios de
+              baja intensidad dentro de la piscina.
             </p>
 
             <div
@@ -394,19 +382,21 @@ function PoolPage() {
 
           <div className={styles.olderAdultsContent}>
             <span className={styles.sectionEyebrow}>
-              Actividades adaptadas
+              Para adultos y adultos mayores
             </span>
 
             <h2
               className={styles.sectionTitle}
-              id="older-adults-title"
+              id="aquatherapy-title"
             >
-              Mantente activo en un ambiente cómodo
+              Muévete a tu ritmo dentro del agua
             </h2>
 
             <p className={styles.olderAdultsText}>
-              Contamos con opciones acuáticas que pueden adaptarse a diferentes
-              niveles de experiencia, movilidad y objetivos personales.
+              Aquaterapia es una actividad acuática grupal de baja intensidad
+              orientada a adultos y adultos mayores. Los ejercicios permiten
+              trabajar movilidad, fuerza y condición física de manera
+              progresiva dentro de la piscina.
             </p>
 
             <ul className={styles.olderAdultsList}>
@@ -415,7 +405,7 @@ function PoolPage() {
                   <Check strokeWidth={2.5} />
                 </span>
 
-                Ejercicio de menor impacto para las articulaciones.
+                Ejercicios acuáticos de baja intensidad.
               </li>
 
               <li>
@@ -423,7 +413,7 @@ function PoolPage() {
                   <Check strokeWidth={2.5} />
                 </span>
 
-                Acompañamiento durante la actividad.
+                Actividad grupal guiada por instructor.
               </li>
 
               <li>
@@ -439,19 +429,17 @@ function PoolPage() {
                   <Check strokeWidth={2.5} />
                 </span>
 
-                Ambiente cercano y respetuoso.
+                Orientada a adultos y adultos mayores.
               </li>
             </ul>
 
-            <a
+            <Link
               className={styles.olderAdultsButton}
-              href={whatsappUrl}
-              target="_blank"
-              rel="noreferrer"
+              to="/planes#aquaterapia"
             >
-              Consultar opciones
+              Ver precio y horarios
               <ArrowRight aria-hidden="true" strokeWidth={2} />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -512,7 +500,7 @@ function PoolPage() {
               target="_blank"
               rel="noreferrer"
             >
-              Consultar horarios
+              Consultar horarios y cupos
               <ArrowRight aria-hidden="true" strokeWidth={2} />
             </a>
           </aside>

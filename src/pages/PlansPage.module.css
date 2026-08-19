@@ -302,6 +302,104 @@
 }
 
 /* ==========================================
+   NAVEGACIÓN RÁPIDA
+   ========================================== */
+
+.quickNavigation {
+  position: relative;
+  z-index: 5;
+  padding-block: 1.1rem;
+  background-color: rgb(255 255 255 / 96%);
+  border-block: 1px solid var(--color-border);
+  box-shadow: 0 8px 24px rgb(2 31 53 / 5%);
+}
+
+.quickNavigationContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.quickNavigationLabel {
+  flex: 0 0 auto;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quickNavigationLinks {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.quickNavigationLink {
+  display: flex;
+  min-width: 0;
+  min-height: 58px;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.65rem 0.85rem;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  transition:
+    color var(--transition-base),
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    transform var(--transition-base);
+}
+
+.quickNavigationLink:hover {
+  color: var(--color-primary);
+  background-color: rgb(144 224 239 / 16%);
+  border-color: rgb(0 119 182 / 12%);
+  transform: translateY(-2px);
+}
+
+.quickNavigationIcon {
+  display: inline-flex;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  background-color: rgb(144 224 239 / 22%);
+  border-radius: 50%;
+}
+
+.quickNavigationIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.quickNavigationLink strong {
+  min-width: 0;
+  flex: 1;
+  font-size: 0.8rem;
+  line-height: 1.2;
+}
+
+.quickNavigationLink > svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  color: var(--color-primary);
+}
+
+#plan-gimnasio,
+#planes-combinados,
+#planes-piscina,
+#pases-diarios {
+  scroll-margin-top: 120px;
+}
+
+/* ==========================================
    PLANES PRINCIPALES
    ========================================== */
 
@@ -362,15 +460,29 @@
 
 .featuredPlan {
   color: var(--color-white);
+  border: 1px solid rgb(255 255 255 / 18%);
+  box-shadow: 0 22px 50px rgb(0 119 182 / 24%);
+}
+
+.premiumPlan {
   background:
     linear-gradient(
       150deg,
-      var(--color-primary-dark),
       var(--color-primary),
+      #078fc3 56%,
       var(--color-secondary)
     );
-  border: 1px solid rgb(255 255 255 / 18%);
-  box-shadow: 0 22px 50px rgb(0 119 182 / 24%);
+}
+
+.proPlan {
+  background:
+    linear-gradient(
+      150deg,
+      #021f35 0%,
+      var(--color-primary-dark) 52%,
+      var(--color-primary) 100%
+    );
+  box-shadow: 0 24px 54px rgb(2 31 53 / 28%);
 }
 
 .planCard:hover {
@@ -391,12 +503,24 @@
   align-items: center;
   padding-inline: var(--space-3);
   color: var(--color-primary-dark);
-  font-size: 0.7rem;
+  font-size: 0.74rem;
   font-weight: 900;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   background-color: var(--color-white);
   border-radius: var(--radius-pill);
+}
+
+.premiumPlan .badge {
+  color: var(--color-primary-dark);
+  background-color: rgb(255 255 255 / 96%);
+}
+
+.proPlan .badge {
+  color: var(--color-white);
+  background-color: rgb(255 255 255 / 14%);
+  border: 1px solid rgb(255 255 255 / 26%);
+  backdrop-filter: blur(8px);
 }
 
 .planIcon {
@@ -415,6 +539,21 @@
   color: var(--color-white);
   background-color: rgb(255 255 255 / 14%);
   border: 1px solid rgb(255 255 255 / 20%);
+}
+
+.proPlan .planIcon {
+  background-color: rgb(255 255 255 / 10%);
+  border-color: rgb(255 255 255 / 24%);
+}
+
+.premiumPlan .planButton {
+  color: var(--color-primary-dark);
+  background-color: var(--color-white);
+}
+
+.proPlan .planButton {
+  color: var(--color-primary-dark);
+  background-color: var(--color-white);
 }
 
 .planIcon svg {
@@ -607,9 +746,9 @@
 
 .rateCard {
   display: flex;
-  min-height: 275px;
+  min-height: 205px;
   flex-direction: column;
-  padding: var(--space-5);
+  padding: var(--space-4);
   background-color: rgb(255 255 255 / 94%);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -618,33 +757,33 @@
 
 .rateIcon {
   display: inline-flex;
-  width: 52px;
-  height: 52px;
+  width: 44px;
+  height: 44px;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-3);
   color: var(--color-primary);
   background-color: rgb(144 224 239 / 28%);
   border-radius: var(--radius-md);
 }
 
 .rateIcon svg {
-  width: 26px;
-  height: 26px;
+  width: 22px;
+  height: 22px;
 }
 
 .rateCard h3 {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
   color: var(--color-text);
-  font-size: 1.15rem;
+  font-size: 1.02rem;
   letter-spacing: -0.02em;
   line-height: 1.3;
 }
 
 .ratePrice {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
   color: var(--color-primary-dark);
-  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  font-size: clamp(1.8rem, 2.6vw, 2.25rem);
   font-weight: 900;
   letter-spacing: -0.045em;
   line-height: 1;
@@ -657,19 +796,54 @@
   letter-spacing: normal;
 }
 
-.rateNote {
-  margin: auto 0 0;
+.rateCondition {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 28px;
+  align-items: center;
+  margin-top: auto;
+  padding-inline: 0.7rem;
+  color: var(--color-primary-dark);
+  font-size: 0.72rem;
+  font-weight: 850;
+  background-color: rgb(144 224 239 / 22%);
+  border: 1px solid rgb(0 119 182 / 10%);
+  border-radius: var(--radius-pill);
+}
+
+.specialRatesNote {
+  display: flex;
+  max-width: 920px;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin: var(--space-4) 0 0;
+  padding: var(--space-3) var(--space-4);
   color: var(--color-text-muted);
   font-size: 0.8rem;
   line-height: 1.6;
+  background-color: rgb(255 255 255 / 72%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.specialRatesNote > svg {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+  margin-top: 0.1rem;
+  color: var(--color-primary);
+}
+
+.specialRatesNote strong {
+  color: var(--color-text);
 }
 
 .gymScheduleNote {
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  margin-top: var(--space-5);
-  padding: var(--space-5);
+  margin-top: var(--space-4);
+  padding: var(--space-4);
   background-color: var(--color-white);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -995,6 +1169,95 @@
   font-size: 0.84rem;
 }
 
+.poolModeGuide {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.28fr);
+  align-items: stretch;
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+  padding: clamp(1.25rem, 2.5vw, 1.75rem);
+  background-color: rgb(247 250 252 / 92%);
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius-lg) + 0.15rem);
+}
+
+.poolModeGuideHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.poolModeGuideHeader .sectionEyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.poolModeGuideHeader h3 {
+  max-width: 15ch;
+  margin: 0 0 var(--space-2);
+  color: var(--color-text);
+  font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.poolModeGuideHeader p {
+  max-width: 38ch;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.poolModeGuideGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.poolModeGuideItem {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-3);
+  min-width: 0;
+  padding: var(--space-3);
+  background-color: var(--color-white);
+  border: 1px solid rgb(0 119 182 / 9%);
+  border-radius: var(--radius-md);
+}
+
+.poolModeGuideIcon {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  background-color: rgb(144 224 239 / 24%);
+  border-radius: 50%;
+}
+
+.poolModeGuideIcon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.poolModeGuideItem h4 {
+  margin: 0 0 0.3rem;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.poolModeGuideItem p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
 .poolActivityGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1055,6 +1318,32 @@
   line-height: 1.65;
 }
 
+.rateGroups {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.rateGroup {
+  min-width: 0;
+}
+
+.rateGroup h4 {
+  margin: 0 0 var(--space-2);
+  padding: 0.65rem 0.85rem;
+  color: var(--color-primary-dark);
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1.35;
+  background-color: rgb(144 224 239 / 18%);
+  border: 1px solid rgb(0 119 182 / 10%);
+  border-radius: var(--radius-md);
+}
+
+.rateGroup .rateTable {
+  margin-bottom: 0;
+}
+
 .rateTable {
   display: grid;
   margin-bottom: var(--space-5);
@@ -1068,7 +1357,7 @@
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--space-4);
-  padding: 0.9rem 1rem;
+  padding: 0.78rem 0.95rem;
   background-color: rgb(255 255 255 / 85%);
 }
 
@@ -1397,6 +1686,24 @@
    ========================================== */
 
 @media (max-width: 1100px) {
+  .poolModeGuide {
+    grid-template-columns: 1fr;
+  }
+
+  .poolModeGuideHeader h3 {
+    max-width: none;
+  }
+
+  .quickNavigationContainer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .quickNavigationLinks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .heroContainer {
     grid-template-columns: 1fr;
   }
@@ -1545,6 +1852,40 @@
 }
 
 @media (max-width: 600px) {
+  .poolModeGuide {
+    padding: var(--space-4);
+  }
+
+  .poolModeGuideGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .rateGroup h4 {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.78rem;
+  }
+
+
+  .specialRatesNote {
+    padding: var(--space-3);
+  }
+
+  .quickNavigationLinks {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .quickNavigationLink {
+    min-height: 64px;
+  }
+
+  .quickNavigationLink > svg {
+    display: none;
+  }
+
+  .quickNavigationLink strong {
+    font-size: 0.76rem;
+  }
+
   .heroVisual {
     min-height: 650px;
   }
@@ -1600,6 +1941,7 @@
 @media (prefers-reduced-motion: reduce) {
   .planCard,
   .planButton,
+  .quickNavigationLink,
   .poolActivityButton,
   .primaryButton,
   .secondaryButton,
@@ -1609,6 +1951,7 @@
 
   .planCard:hover,
   .featuredPlan:hover,
+  .quickNavigationLink:hover,
   .planButton:hover,
   .poolActivityButton:hover,
   .primaryButton:hover,

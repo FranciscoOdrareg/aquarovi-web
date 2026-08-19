@@ -39,11 +39,17 @@ type RateOption = {
   note?: string
 }
 
+type RateGroup = {
+  label: string
+  rates: RateOption[]
+}
+
 type PoolActivity = {
   name: string
   description: string
   icon: typeof Waves
-  rates: RateOption[]
+  rates?: RateOption[]
+  groups?: RateGroup[]
   details: string[]
   message: string
 }
@@ -56,17 +62,15 @@ const gymRates: RateOption[] = [
   {
     label: 'Estudiantes de colegio',
     price: '₡17.500',
-    note:
-      'Para aplicar la tarifa debe presentarse uniforme o cuaderno de comunicaciones del colegio.',
+    note: 'Requiere comprobante',
   },
   {
     label: 'Estudiantes universitarios',
     price: '₡22.500',
-    note:
-      'Para aplicar la tarifa debe presentarse carnet de estudiante universitario.',
+    note: 'Requiere carnet vigente',
   },
   {
-    label: 'Adultos mayores de 65 años',
+    label: 'Adultos mayores (65+)',
     price: '₡18.900',
   },
 ]
@@ -118,7 +122,7 @@ const mainPlans: MainPlan[] = [
       'Combina gimnasio completo con una clase de natación con instructor una vez por semana.',
     price: '₡39.900',
     frequency: 'por mes',
-    badge: 'Combinado',
+    badge: '1× piscina / semana',
     features: [
       'Acceso completo al gimnasio',
       'Natación con instructor 1 vez por semana',
@@ -136,7 +140,7 @@ const mainPlans: MainPlan[] = [
       'Mayor frecuencia en piscina para complementar tu entrenamiento semanal de gimnasio.',
     price: '₡49.900',
     frequency: 'por mes',
-    badge: 'Mayor frecuencia',
+    badge: '2× piscina / semana',
     features: [
       'Acceso completo al gimnasio',
       'Natación con instructor 2 veces por semana',
@@ -155,42 +159,57 @@ const poolActivities: PoolActivity[] = [
     description:
       'Sesiones semipersonalizadas con rutina según las necesidades de cada persona y orientación del instructor desde fuera de la piscina.',
     icon: PersonStanding,
-    rates: [
+    groups: [
       {
-        label: 'Niños de 3 a 6 años · 1 vez por semana',
-        price: '₡28.000',
+        label: 'Niños de 3 a 6 años',
+        rates: [
+          {
+            label: '1 vez por semana',
+            price: '₡28.000',
+          },
+          {
+            label: '2 veces por semana',
+            price: '₡36.000',
+          },
+          {
+            label: '3 veces por semana',
+            price: '₡44.000',
+          },
+        ],
       },
       {
-        label: 'Niños de 3 a 6 años · 2 veces por semana',
-        price: '₡36.000',
+        label: '7 años en adelante y adultos',
+        rates: [
+          {
+            label: '1 vez por semana',
+            price: '₡26.000',
+          },
+          {
+            label: '2 veces por semana',
+            price: '₡34.000',
+          },
+          {
+            label: '3 veces por semana',
+            price: '₡41.000',
+          },
+        ],
       },
       {
-        label: 'Niños de 3 a 6 años · 3 veces por semana',
-        price: '₡44.000',
-      },
-      {
-        label: '7 años en adelante y adultos · 1 vez por semana',
-        price: '₡26.000',
-      },
-      {
-        label: '7 años en adelante y adultos · 2 veces por semana',
-        price: '₡34.000',
-      },
-      {
-        label: '7 años en adelante y adultos · 3 veces por semana',
-        price: '₡41.000',
-      },
-      {
-        label: 'Adultos mayores · 1 vez por semana',
-        price: '₡19.000',
-      },
-      {
-        label: 'Adultos mayores · 2 veces por semana',
-        price: '₡27.000',
-      },
-      {
-        label: 'Adultos mayores · 3 veces por semana',
-        price: '₡35.000',
+        label: 'Adultos mayores',
+        rates: [
+          {
+            label: '1 vez por semana',
+            price: '₡19.000',
+          },
+          {
+            label: '2 veces por semana',
+            price: '₡27.000',
+          },
+          {
+            label: '3 veces por semana',
+            price: '₡35.000',
+          },
+        ],
       },
     ],
     details: [
@@ -206,30 +225,40 @@ const poolActivities: PoolActivity[] = [
     description:
       'Opción para practicar o entrenar de forma independiente. Esta modalidad no incluye instructor.',
     icon: Waves,
-    rates: [
+    groups: [
       {
-        label: 'Niños de 3 a 6 años · 1 vez por semana',
-        price: '₡26.000',
+        label: 'Niños de 3 a 6 años',
+        rates: [
+          {
+            label: '1 vez por semana',
+            price: '₡26.000',
+          },
+          {
+            label: '2 veces por semana',
+            price: '₡34.000',
+          },
+          {
+            label: '3 veces por semana',
+            price: '₡41.000',
+          },
+        ],
       },
       {
-        label: 'Niños de 3 a 6 años · 2 veces por semana',
-        price: '₡34.000',
-      },
-      {
-        label: 'Niños de 3 a 6 años · 3 veces por semana',
-        price: '₡41.000',
-      },
-      {
-        label: '7 años en adelante, adultos y adultos mayores · 1 vez por semana',
-        price: '₡23.000',
-      },
-      {
-        label: '7 años en adelante, adultos y adultos mayores · 2 veces por semana',
-        price: '₡30.000',
-      },
-      {
-        label: '7 años en adelante, adultos y adultos mayores · 3 veces por semana',
-        price: '₡38.000',
+        label: '7 años en adelante, adultos y adultos mayores',
+        rates: [
+          {
+            label: '1 vez por semana',
+            price: '₡23.000',
+          },
+          {
+            label: '2 veces por semana',
+            price: '₡30.000',
+          },
+          {
+            label: '3 veces por semana',
+            price: '₡38.000',
+          },
+        ],
       },
     ],
     details: [
@@ -292,6 +321,34 @@ const poolActivities: PoolActivity[] = [
   },
 ]
 
+
+const poolModeGuide = [
+  {
+    title: 'Clase con instructor',
+    description:
+      'Para aprender, mejorar técnica o seguir una rutina guiada dentro de la piscina.',
+    icon: PersonStanding,
+  },
+  {
+    title: 'Nado libre',
+    description:
+      'Para practicar o entrenar de forma independiente y a tu propio ritmo.',
+    icon: Waves,
+  },
+  {
+    title: 'Aquafitness',
+    description:
+      'Para adultos que buscan una actividad grupal más intensa, dinámica y cardiovascular.',
+    icon: HeartHandshake,
+  },
+  {
+    title: 'Aquaterapia',
+    description:
+      'Para adultos y adultos mayores que prefieren ejercicios acuáticos de baja intensidad.',
+    icon: HeartHandshake,
+  },
+]
+
 const dailyPasses = [
   {
     name: 'Gimnasio',
@@ -343,6 +400,30 @@ const conditions = [
     title: 'Confirmación antes de inscribirte',
     description:
       'Consulta disponibilidad, tarifas y condiciones vigentes antes de realizar la inscripción.',
+    icon: CircleDollarSign,
+  },
+]
+
+
+const quickPlanLinks = [
+  {
+    label: 'Gimnasio',
+    href: '#plan-gimnasio',
+    icon: Dumbbell,
+  },
+  {
+    label: 'Planes combinados',
+    href: '#planes-combinados',
+    icon: Sparkles,
+  },
+  {
+    label: 'Piscina',
+    href: '#planes-piscina',
+    icon: Waves,
+  },
+  {
+    label: 'Pases diarios',
+    href: '#pases-diarios',
     icon: CircleDollarSign,
   },
 ]
@@ -478,6 +559,42 @@ function PlansPage() {
         </div>
       </section>
 
+      <nav
+        className={styles.quickNavigation}
+        aria-label="Accesos rápidos a los planes"
+      >
+        <div className={`container ${styles.quickNavigationContainer}`}>
+          <span className={styles.quickNavigationLabel}>
+            Ir directamente a
+          </span>
+
+          <div className={styles.quickNavigationLinks}>
+            {quickPlanLinks.map((item) => {
+              const Icon = item.icon
+
+              return (
+                <a
+                  className={styles.quickNavigationLink}
+                  href={item.href}
+                  key={item.href}
+                >
+                  <span
+                    className={styles.quickNavigationIcon}
+                    aria-hidden="true"
+                  >
+                    <Icon strokeWidth={1.8} />
+                  </span>
+
+                  <strong>{item.label}</strong>
+
+                  <ArrowRight aria-hidden="true" strokeWidth={2} />
+                </a>
+              )
+            })}
+          </div>
+        </div>
+      </nav>
+
       <section
         className={`section ${styles.mainPlans}`}
         id="planes-destacados"
@@ -511,7 +628,20 @@ function PlansPage() {
                     plan.variant === 'featured'
                       ? styles.featuredPlan
                       : styles.standardPlan
+                  } ${
+                    plan.name === 'Premium Fitness'
+                      ? styles.premiumPlan
+                      : plan.name === 'PRO Fitness'
+                        ? styles.proPlan
+                        : ''
                   }`}
+                  id={
+                    plan.name === 'Gimnasio'
+                      ? 'plan-gimnasio'
+                      : plan.name === 'Premium Fitness'
+                        ? 'planes-combinados'
+                        : undefined
+                  }
                   key={plan.name}
                 >
                   {plan.badge && (
@@ -594,7 +724,7 @@ function PlansPage() {
             </h2>
 
             <p className={styles.poolDescription}>
-              Además de la tarifa normal, Aquarovi cuenta con mensualidades
+              Compara rápidamente la tarifa normal con las mensualidades
               especiales para estudiantes y adultos mayores.
             </p>
           </div>
@@ -621,11 +751,20 @@ function PlansPage() {
                 </div>
 
                 {rate.note && (
-                  <p className={styles.rateNote}>{rate.note}</p>
+                  <span className={styles.rateCondition}>{rate.note}</span>
                 )}
               </article>
             ))}
           </div>
+
+          <p className={styles.specialRatesNote}>
+            <Info aria-hidden="true" strokeWidth={1.8} />
+            <span>
+              <strong>Tarifas especiales:</strong> para aplicar los precios de
+              estudiante se debe presentar el documento correspondiente.
+              Consulta vigencia y condiciones antes de inscribirte.
+            </span>
+          </p>
 
           <div className={styles.gymScheduleNote}>
             <Clock3 aria-hidden="true" strokeWidth={1.8} />
@@ -698,6 +837,7 @@ function PlansPage() {
 
       <section
         className={`section ${styles.poolPlans}`}
+        id="planes-piscina"
         aria-labelledby="pool-plans-title"
       >
         <div className="container">
@@ -755,6 +895,51 @@ function PlansPage() {
             </aside>
           </div>
 
+          <div
+            className={styles.poolModeGuide}
+            aria-labelledby="pool-mode-guide-title"
+          >
+            <div className={styles.poolModeGuideHeader}>
+              <span className={styles.sectionEyebrow}>
+                Guía rápida
+              </span>
+
+              <h3 id="pool-mode-guide-title">
+                ¿Cuál opción se adapta mejor a ti?
+              </h3>
+
+              <p>
+                Una referencia breve para orientarte antes de comparar precios y
+                frecuencias.
+              </p>
+            </div>
+
+            <div className={styles.poolModeGuideGrid}>
+              {poolModeGuide.map((item) => {
+                const Icon = item.icon
+
+                return (
+                  <article
+                    className={styles.poolModeGuideItem}
+                    key={item.title}
+                  >
+                    <span
+                      className={styles.poolModeGuideIcon}
+                      aria-hidden="true"
+                    >
+                      <Icon strokeWidth={1.8} />
+                    </span>
+
+                    <div>
+                      <h4>{item.title}</h4>
+                      <p>{item.description}</p>
+                    </div>
+                  </article>
+                )
+              })}
+            </div>
+          </div>
+
           <div className={styles.poolActivityGrid}>
             {poolActivities.map((activity) => {
               const Icon = activity.icon
@@ -779,17 +964,42 @@ function PlansPage() {
                     </div>
                   </div>
 
-                  <div className={styles.rateTable}>
-                    {activity.rates.map((rate) => (
-                      <div
-                        className={styles.rateRow}
-                        key={`${activity.name}-${rate.label}`}
-                      >
-                        <span>{rate.label}</span>
-                        <strong>{rate.price}</strong>
-                      </div>
-                    ))}
-                  </div>
+                  {activity.groups ? (
+                    <div className={styles.rateGroups}>
+                      {activity.groups.map((group) => (
+                        <section
+                          className={styles.rateGroup}
+                          key={`${activity.name}-${group.label}`}
+                        >
+                          <h4>{group.label}</h4>
+
+                          <div className={styles.rateTable}>
+                            {group.rates.map((rate) => (
+                              <div
+                                className={styles.rateRow}
+                                key={`${activity.name}-${group.label}-${rate.label}`}
+                              >
+                                <span>{rate.label}</span>
+                                <strong>{rate.price}</strong>
+                              </div>
+                            ))}
+                          </div>
+                        </section>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className={styles.rateTable}>
+                      {activity.rates?.map((rate) => (
+                        <div
+                          className={styles.rateRow}
+                          key={`${activity.name}-${rate.label}`}
+                        >
+                          <span>{rate.label}</span>
+                          <strong>{rate.price}</strong>
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
                   <ul className={styles.activityDetails}>
                     {activity.details.map((detail) => (
@@ -818,6 +1028,7 @@ function PlansPage() {
 
       <section
         className={`section ${styles.dailyPasses}`}
+        id="pases-diarios"
         aria-labelledby="daily-passes-title"
       >
         <div className="container">
