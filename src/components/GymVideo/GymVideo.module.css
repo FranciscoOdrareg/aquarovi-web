@@ -1,0 +1,444 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(
+      180deg,
+      rgb(247 250 252 / 88%) 0%,
+      rgb(255 255 255 / 100%) 100%
+    );
+}
+
+.container {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.heading {
+  max-width: 760px;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  max-width: 16ch;
+  margin-bottom: var(--space-3);
+  color: var(--color-text);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  letter-spacing: -0.05em;
+  line-height: 1.03;
+}
+
+.description {
+  max-width: 680px;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/* ========================================
+   PREVISUALIZACIÓN DEL VIDEO
+======================================== */
+
+.videoPreview {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-radius: calc(var(--radius-lg) + 0.4rem);
+  box-shadow: 0 22px 50px rgb(2 31 53 / 14%);
+  aspect-ratio: 16 / 9;
+}
+
+.poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 420ms ease;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgb(2 31 53 / 66%) 0%,
+      rgb(2 31 53 / 34%) 42%,
+      rgb(2 31 53 / 16%) 100%
+    );
+  transition: background 220ms ease;
+}
+
+.playContent {
+  position: absolute;
+  z-index: 2;
+  left: clamp(1.25rem, 4vw, 3rem);
+  bottom: clamp(1.25rem, 4vw, 3rem);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--color-white);
+}
+
+.playButton {
+  display: inline-flex;
+  width: clamp(58px, 7vw, 76px);
+  height: clamp(58px, 7vw, 76px);
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-dark);
+  background-color: var(--color-white);
+  border-radius: 50%;
+  box-shadow: 0 14px 34px rgb(0 0 0 / 22%);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.playButton svg {
+  width: 28px;
+  height: 28px;
+  margin-left: 3px;
+}
+
+.playText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.playText strong {
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 1.1;
+}
+
+.playText small {
+  color: rgb(255 255 255 / 82%);
+  font-size: 0.85rem;
+}
+
+.videoBadge {
+  position: absolute;
+  z-index: 2;
+  top: clamp(1rem, 3vw, 1.5rem);
+  right: clamp(1rem, 3vw, 1.5rem);
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  padding-inline: var(--space-3);
+  color: var(--color-white);
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: rgb(2 31 53 / 58%);
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(8px);
+}
+
+.videoPreview:hover .poster {
+  transform: scale(1.035);
+}
+
+.videoPreview:hover .playButton {
+  box-shadow: 0 18px 40px rgb(0 0 0 / 28%);
+  transform: scale(1.06);
+}
+
+.videoPreview:focus-visible {
+  outline: 3px solid rgb(0 119 182 / 30%);
+  outline-offset: 4px;
+}
+
+/* ========================================
+   VISOR / MODAL
+======================================== */
+
+.modal {
+  position: fixed;
+  z-index: 999999;
+  inset: 0;
+
+  display: grid;
+  place-items: center;
+
+  padding: clamp(1.5rem, 5vw, 4rem);
+
+  background-color: rgb(2 31 53 / 88%);
+  backdrop-filter: blur(10px);
+
+  animation: modalFadeIn 180ms ease;
+}
+
+.modalContent {
+  position: relative;
+
+  width: min(90vw, 900px);
+  max-width: 900px;
+
+  overflow: hidden;
+
+  background-color: #000;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: calc(var(--radius-lg) + 0.35rem);
+
+  box-shadow: 0 32px 100px rgb(0 0 0 / 55%);
+
+  animation: modalScaleIn 200ms ease;
+}
+
+.video {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  max-height: 72vh;
+
+  background-color: #000;
+
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
+/* ========================================
+   BOTÓN CERRAR
+======================================== */
+
+.closeButton {
+  position: absolute;
+  z-index: 5;
+
+  top: 0.9rem;
+  right: 0.9rem;
+
+  display: inline-flex;
+
+  width: 44px;
+  height: 44px;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  color: var(--color-text);
+  background-color: rgb(255 255 255 / 94%);
+
+  border: 1px solid rgb(255 255 255 / 60%);
+  border-radius: 50%;
+
+  box-shadow: 0 8px 22px rgb(0 0 0 / 22%);
+
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.closeButton:hover {
+  background-color: var(--color-white);
+  box-shadow: 0 10px 26px rgb(0 0 0 / 28%);
+  transform: scale(1.06);
+}
+
+.closeButton:focus-visible {
+  outline: 3px solid rgb(255 255 255 / 45%);
+  outline-offset: 3px;
+}
+
+.closeButton svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* ========================================
+   ANIMACIONES
+======================================== */
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 900px) {
+  .title {
+    max-width: 18ch;
+  }
+
+  .videoPreview {
+    aspect-ratio: 16 / 10;
+  }
+
+  .modal {
+    padding: 1.5rem;
+  }
+
+  .modalContent {
+    width: min(94vw, 850px);
+  }
+
+  .video {
+    max-height: 75vh;
+  }
+}
+
+/* ========================================
+   MÓVIL
+======================================== */
+
+@media (max-width: 650px) {
+  .title {
+    max-width: none;
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .videoPreview {
+    aspect-ratio: 4 / 3;
+  }
+
+  .poster {
+    object-position: center;
+  }
+
+  .playContent {
+    right: 1rem;
+    left: 1rem;
+    bottom: 1rem;
+  }
+
+  .playButton {
+    width: 54px;
+    height: 54px;
+  }
+
+  .playButton svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .playText small {
+    display: none;
+  }
+
+  .videoBadge {
+    top: 0.85rem;
+    right: 0.85rem;
+    font-size: 0.65rem;
+  }
+
+  .modal {
+    padding: 1rem;
+  }
+
+  .modalContent {
+    width: 100%;
+    max-width: none;
+    border-radius: var(--radius-lg);
+  }
+
+  .video {
+    width: 100%;
+    max-height: 70vh;
+  }
+
+  .closeButton {
+    top: 0.65rem;
+    right: 0.65rem;
+
+    width: 40px;
+    height: 40px;
+  }
+
+  .closeButton svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* ========================================
+   PANTALLAS MUY PEQUEÑAS
+======================================== */
+
+@media (max-width: 420px) {
+  .modal {
+    padding: 0.65rem;
+  }
+
+  .playContent {
+    gap: 0.75rem;
+  }
+
+  .playButton {
+    width: 50px;
+    height: 50px;
+  }
+
+  .playText strong {
+    font-size: 0.95rem;
+  }
+}
+
+/* ========================================
+   MOVIMIENTO REDUCIDO
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .poster,
+  .playButton,
+  .closeButton {
+    transition: none;
+  }
+
+  .videoPreview:hover .poster,
+  .videoPreview:hover .playButton,
+  .closeButton:hover {
+    transform: none;
+  }
+
+  .modal,
+  .modalContent {
+    animation: none;
+  }
+}

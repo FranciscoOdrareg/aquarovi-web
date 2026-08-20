@@ -14,6 +14,7 @@ import {
   Users,
 } from 'lucide-react'
 import { Link } from 'react-router'
+import GymVideo from '../components/GymVideo/GymVideo'
 import SEO from '../components/SEO/SEO'
 import styles from './GymPage.module.css'
 
@@ -317,6 +318,8 @@ function GymPage() {
             </div>
           </div>
         </section>
+
+        <GymVideo />
 
         <section
           className={`section ${styles.support}`}
